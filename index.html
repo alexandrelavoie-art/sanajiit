@@ -18,6 +18,16 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 .topnav-links a{color:var(--silver);text-decoration:none;font-size:12px;font-weight:500;padding:5px 12px;border-radius:6px;transition:background .15s,color .15s;white-space:nowrap;}
 .topnav-links a:hover,.topnav-links a.active{background:rgba(255,255,255,.08);color:white;}
 .topnav-links a.active{color:var(--gold);}
+
+.topnav-toggle{display:none;cursor:pointer;flex-shrink:0;border:none;background:transparent;color:var(--silver);font-size:18px;padding:4px;}
+
+@media(max-width:680px){
+  .topnav{padding:0 12px;}
+  .topnav-links{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;padding:10px 12px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);}
+  .topnav.open .topnav-links{display:flex;}
+  .topnav-links a{padding:10px 12px;white-space:normal;}
+  .topnav-toggle{display:block;}
+}
 .page{display:none;padding-top:56px;min-height:100vh;}
 .page.active{display:block;}
 .page-hero{background:var(--navy);color:white;padding:52px 40px 68px;position:relative;overflow:hidden;}
@@ -230,6 +240,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
     <img src="https://www.kativik.qc.ca/wp-content/themes/henri-theme/images/logo-1.svg" alt="KI" onerror="this.style.display='none'">
     <div class="topnav-logo-text">Sanajiit<span>Essential Skills · Kativik Ilisarniliriniq</span></div>
   </a>
+  <button type="button" class="topnav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
   <div class="topnav-links">
     <a href="#" onclick="showPage('overview');return false;" id="nav-overview" class="active">Overview</a>
     <a href="#" onclick="showPage('cs0');return false;" id="nav-cs0">CS0 — Intro</a>
@@ -1134,7 +1145,13 @@ function showPage(id){
   document.querySelectorAll('.topnav-links a').forEach(a=>a.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.getElementById('nav-'+id).classList.add('active');
+  // Close mobile nav after navigation
+  document.querySelector('.topnav')?.classList.remove('open');
   window.scrollTo(0,0);
+}
+
+function toggleNav(){
+  document.querySelector('.topnav')?.classList.toggle('open');
 }
 
 // GANTT — precise date-driven, calendar-accurate month columns
