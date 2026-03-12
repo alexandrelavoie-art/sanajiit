@@ -9,6 +9,7 @@
 :root{--navy:#0f1f3d;--navy2:#1a3260;--gold:#c9a84c;--gold-light:#f0e0a8;--slate:#4a5568;--silver:#8e9db5;--bg:#f4f6fa;--white:#ffffff;--red:#9b2c2c;--green:#2d6a4f;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color:var(--navy);}
+body.intro-open{overflow:hidden;}
 .topnav{position:relative;z-index:999;background:var(--navy);display:flex;align-items:center;padding:0 24px;height:56px;box-shadow:0 2px 16px rgba(0,0,0,.25);gap:8px;}
 .topnav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:16px;}
 .topnav-logo img{height:28px;filter:brightness(0) invert(1);}
@@ -257,6 +258,13 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 .portfolio-summary-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:7px;}
 .portfolio-summary-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px;}
 .portfolio-summary-desc{font-size:12px;color:var(--slate);line-height:1.5;}
+.milestone-snapshot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px;}
+@media(max-width:760px){.milestone-snapshot-grid{grid-template-columns:1fr;}}
+.milestone-snapshot-item{background:var(--bg);border:1px solid rgba(15,31,61,.09);border-radius:10px;padding:12px;}
+.milestone-snapshot-kicker{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:6px;}
+.milestone-snapshot-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px;line-height:1.35;}
+.milestone-snapshot-meta{display:inline-flex;align-items:center;border-radius:999px;padding:4px 8px;background:rgba(15,31,61,.07);font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--silver);}
+.milestone-snapshot-desc{font-size:12px;color:var(--slate);line-height:1.5;margin-top:8px;}
 .portfolio-link-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:16px;background:var(--navy);color:var(--gold);border:1px solid rgba(201,168,76,.45);padding:8px 14px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .15s,color .15s,border-color .15s;}
 .portfolio-link-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
 .portfolio-filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 16px;}
@@ -330,6 +338,44 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 .portfolio-gallery-title{font-size:13px;font-weight:600;color:var(--navy);line-height:1.35;}
 .portfolio-gallery-desc{font-size:12px;color:var(--slate);line-height:1.45;flex:1;}
 @media(max-width:640px){.portfolio-resource{grid-template-columns:1fr;}.portfolio-resource .portfolio-cta{justify-self:start;}}
+
+/* intro slides */
+.intro-overlay{position:fixed;inset:0;z-index:120000;background:rgba(15,31,61,.82);display:none;align-items:center;justify-content:center;padding:20px;}
+.intro-overlay.show{display:flex;animation:introFadeIn .22s ease-out;}
+.intro-card{width:min(760px,100%);background:linear-gradient(180deg,#ffffff 0%,#f7f9ff 100%);border-radius:16px;border:1px solid rgba(15,31,61,.14);box-shadow:0 18px 40px rgba(0,0,0,.35);overflow:hidden;position:relative;}
+.intro-card::before{content:'';position:absolute;top:-58px;right:-70px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.22),rgba(201,168,76,0) 70%);pointer-events:none;}
+.intro-card::after{content:'';position:absolute;bottom:-84px;left:-76px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(26,50,96,.16),rgba(26,50,96,0) 70%);pointer-events:none;}
+.intro-overlay.show .intro-card{animation:introCardIn .28s ease-out;}
+.intro-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:linear-gradient(90deg,var(--navy),var(--navy2));}
+.intro-step{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--gold-light);}
+.intro-skip{border:1px solid rgba(201,168,76,.5);background:rgba(255,255,255,.08);color:var(--gold-light);font-size:11px;font-weight:600;letter-spacing:1px;border-radius:999px;padding:6px 12px;cursor:pointer;}
+.intro-skip:hover{background:rgba(255,255,255,.16);}
+.intro-body{padding:24px 22px 18px;min-height:320px;position:relative;z-index:1;}
+.intro-slide{display:none;}
+.intro-slide.active{display:block;animation:introSlideIn .26s ease-out;}
+.intro-title{font-family:'DM Serif Display',serif;font-size:31px;line-height:1.08;color:var(--navy);margin-bottom:10px;letter-spacing:.2px;}
+.intro-title-icon{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:rgba(15,31,61,.08);font-size:20px;vertical-align:middle;margin-right:8px;}
+.intro-sub{font-size:14px;color:var(--slate);line-height:1.65;margin-bottom:12px;}
+.intro-points{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+@media(max-width:620px){.intro-points{grid-template-columns:1fr;}}
+.intro-point{background:linear-gradient(180deg,#ffffff,#f3f6ff);border:1px solid rgba(15,31,61,.1);border-radius:12px;padding:11px 12px;font-size:12px;color:var(--slate);line-height:1.5;box-shadow:0 3px 12px rgba(15,31,61,.06);transition:transform .15s,box-shadow .15s;}
+.intro-slide.active .intro-point{animation:introPointIn .3s ease-out both;}
+.intro-slide.active .intro-point:nth-child(2){animation-delay:.04s;}
+.intro-slide.active .intro-point:nth-child(3){animation-delay:.08s;}
+.intro-slide.active .intro-point:nth-child(4){animation-delay:.12s;}
+.intro-point:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,31,61,.1);}
+.intro-point strong{color:var(--navy);font-weight:600;}
+.intro-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:14px 18px;border-top:1px solid rgba(15,31,61,.1);background:#fbfcff;}
+.intro-btn{border-radius:999px;padding:8px 14px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:700;cursor:pointer;}
+.intro-btn.ghost{border:1px solid rgba(15,31,61,.18);background:var(--white);color:var(--slate);}
+.intro-btn.primary{border:1px solid var(--navy);background:var(--navy);color:var(--gold-light);}
+.intro-btn.start{border:1px solid #2d6a4f;background:#2d6a4f;color:#ffffff;display:none;}
+.intro-btn:hover{filter:brightness(1.04);}
+
+@keyframes introFadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes introCardIn{from{transform:translateY(10px) scale(.985);opacity:0;}to{transform:translateY(0) scale(1);opacity:1;}}
+@keyframes introSlideIn{from{transform:translateX(8px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+@keyframes introPointIn{from{transform:translateY(8px);opacity:0;}to{transform:translateY(0);opacity:1;}}
 </style>
 </head>
 <body>
@@ -340,6 +386,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
     <div class="topnav-logo-text">Sanajiit<span>Essential Skills · Kativik Ilisarniliriniq</span></div>
   </a>
   <div class="topnav-links">
+    <a href="javascript:void(0)" onclick="openIntroTour();return false;">Welcome</a>
     <a href="javascript:void(0)" onclick="showPage('overview');return false;" class="nav-link active" data-page="overview">Overview</a>
     <a href="javascript:void(0)" onclick="showPage('cs0');return false;" class="nav-link" data-page="cs0">CS0 — Intro</a>
     <a href="javascript:void(0)" onclick="showPage('cs1');return false;" class="nav-link" data-page="cs1">CS1 — Shed</a>
@@ -350,6 +397,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
     <a href="javascript:void(0)" onclick="showPage('portfolio');return false;" class="nav-link" data-page="portfolio">Portfolio</a>
   </div>
   <div class="topnav-drawer">
+    <a href="javascript:void(0)" onclick="openIntroTour();return false;">Welcome</a>
     <a href="javascript:void(0)" onclick="showPage('overview');return false;" class="nav-link active" data-page="overview">Overview</a>
     <a href="javascript:void(0)" onclick="showPage('cs0');return false;" class="nav-link" data-page="cs0">CS0 — Intro</a>
     <a href="javascript:void(0)" onclick="showPage('cs1');return false;" class="nav-link" data-page="cs1">CS1 — Shed</a>
@@ -362,6 +410,43 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 </nav>
 <button type="button" class="topnav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
 
+<div id="intro-overlay" class="intro-overlay" role="dialog" aria-modal="true" aria-labelledby="intro-title">
+  <div class="intro-card">
+    <div class="intro-head">
+      <span id="intro-step" class="intro-step">1 / 3</span>
+      <button type="button" class="intro-skip" onclick="closeIntroTour(true)">Passer</button>
+    </div>
+    <div class="intro-body">
+      <section class="intro-slide active">
+        <h2 id="intro-title" class="intro-title"><span class="intro-title-icon">✨</span>Welcome!</h2>
+        <p class="intro-sub">Welcome to our service offer presentation for the development of a new curriculum for the Sanajiit Essential Skills Program.</p>
+      </section>
+      <section class="intro-slide">
+        <h2 class="intro-title"><span class="intro-title-icon">🧭</span>Structure</h2>
+        <p class="intro-sub">This webpage is organized in sections to support quick understanding and discussion.</p>
+        <div class="intro-points">
+          <div class="intro-point"><strong>🏗️ Program Overview</strong><br>High-level structure and progression.</div>
+          <div class="intro-point"><strong>🗓️ Roadmap</strong><br>Milestones, timeline, and key delivery sequencing.</div>
+          <div class="intro-point"><strong>📚 Portfolio</strong><br>Sample pedagogical resources, references, and demonstration materials.</div>
+        </div>
+      </section>
+      <section class="intro-slide">
+        <h2 class="intro-title"><span class="intro-title-icon">📌</span>Notice</h2>
+        <p class="intro-sub">Please note the following before continuing.</p>
+        <div class="intro-points">
+          <div class="intro-point"><strong>🗣️ Conversation Purpose</strong><br>This content is for conversation purposes and does not constitute a definitive proposal.</div>
+          <div class="intro-point"><strong>🔒 Shared Materials</strong><br>Shared material is for demonstration purposes only and should not be downloaded or shared.</div>
+        </div>
+      </section>
+    </div>
+    <div class="intro-actions">
+      <button type="button" id="intro-prev" class="intro-btn ghost" onclick="changeIntroSlide(-1)">Précédent</button>
+      <button type="button" id="intro-next" class="intro-btn primary" onclick="changeIntroSlide(1)">Suivant</button>
+      <button type="button" id="intro-start" class="intro-btn start" onclick="closeIntroTour(true)">Commencer</button>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════ PAGE: OVERVIEW ═══════ -->
 <div class="page active" id="page-overview">
   <div class="page-hero">
@@ -373,6 +458,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
       <div class="hero-anchors">
         <a class="hero-anchor" href="javascript:void(0)" onclick="document.getElementById('anc-prog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });return false;">↓ Program Progression</a>
         <a class="hero-anchor" href="javascript:void(0)" onclick="document.getElementById('anc-pillars')?.scrollIntoView({ behavior: 'smooth', block: 'start' });return false;">↓ Three Pillars</a>
+        <a class="hero-anchor" href="javascript:void(0)" onclick="document.getElementById('anc-milestones')?.scrollIntoView({ behavior: 'smooth', block: 'start' });return false;">↓ Milestones</a>
         <a class="hero-anchor" href="javascript:void(0)" onclick="document.getElementById('anc-portfolio')?.scrollIntoView({ behavior: 'smooth', block: 'start' });return false;">↓ Portfolio</a>
       </div>
     </div>
@@ -546,6 +632,37 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <div class="connector"><div class="connector-line"></div><div class="connector-label">Development roadmap at a glance</div><div class="connector-line2"></div></div>
+
+    <span class="section-anchor" id="anc-milestones"></span>
+    <div class="card">
+      <div class="card-header"><div class="card-icon">📍</div><div><div class="card-step">Roadmap</div><div class="card-title">Milestones Snapshot</div></div></div>
+      <div class="card-body">
+        <p class="portfolio-intro">Key development checkpoints are grouped by phase to keep the rollout clear: curriculum structure first, then CS streams, then deployment support.</p>
+        <div class="milestone-snapshot-grid">
+          <article class="milestone-snapshot-item">
+            <div class="milestone-snapshot-kicker">Phase 1</div>
+            <h3 class="milestone-snapshot-title">Structure and CS0 Foundation</h3>
+            <span class="milestone-snapshot-meta">Apr → Aug 2026</span>
+            <p class="milestone-snapshot-desc">Define the complete structure and deliver CS0 curriculum plus core teaching materials.</p>
+          </article>
+          <article class="milestone-snapshot-item">
+            <div class="milestone-snapshot-kicker">Phase 2</div>
+            <h3 class="milestone-snapshot-title">CS1 and CS2 Parallel Production</h3>
+            <span class="milestone-snapshot-meta">May → Nov 2026</span>
+            <p class="milestone-snapshot-desc">Develop and build learning assets for CS1 and CS2 in synchronized streams.</p>
+          </article>
+          <article class="milestone-snapshot-item">
+            <div class="milestone-snapshot-kicker">Phase 3</div>
+            <h3 class="milestone-snapshot-title">Infrastructure and Scale-up</h3>
+            <span class="milestone-snapshot-meta">May 2026 → TBD</span>
+            <p class="milestone-snapshot-desc">Platform setup, train-the-trainer, CS3 development, and complementary resources.</p>
+          </article>
+        </div>
+        <button type="button" class="portfolio-link-btn" onclick="showPage('milestones')">Open Milestones Timeline</button>
       </div>
     </div>
 
@@ -1150,24 +1267,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
         <div class="gantt-wrapper">
           <table class="gantt-table">
             <thead><tr><th>#</th><th>Step</th><th>Hours</th><th>Start</th><th>Deadline</th></tr></thead>
-            <tbody>
-              <tr class="phase-header"><td colspan="5">Phase 1 — Structure &amp; CS0</td></tr>
-              <tr><td><span class="step-num">1</span></td><td><strong>General Curriculum Structure</strong> <span style="font-size:12px;color:var(--silver);display:block;">CS0–CS3 overall structure</span></td><td><span class="hrs-badge">25 h</span></td><td><span class="date-badge date-start">Apr 1</span></td><td><span class="date-badge date-end">May 1</span></td></tr>
-              <tr><td><span class="step-num">2</span></td><td><strong>Develop CS0 Curriculum</strong> <span style="font-size:12px;color:var(--silver);display:block;">Objectives, macroplanning, pedagogical material list</span></td><td><span class="hrs-badge">40 h</span></td><td><span class="date-badge date-start">May 1</span></td><td><span class="date-badge date-end">Jun 1</span></td></tr>
-              <tr><td><span class="step-num">3</span></td><td><strong>Create Material for CS0</strong> <span style="font-size:12px;color:var(--silver);display:block;">Blueprints, handouts, student &amp; teacher booklets</span></td><td><span class="hrs-badge">80 h</span></td><td><span class="date-badge date-start">Jun 1</span></td><td><span class="date-badge date-end">Aug 1</span></td></tr>
-              <tr class="phase-header"><td colspan="5">Phase 2 — CS1 &amp; CS2 (parallel streams)</td></tr>
-              <tr><td><span class="step-num">4</span></td><td><strong>Develop CS1 Curriculum</strong> <span style="font-size:12px;color:var(--silver);display:block;">Objectives, macroplanning, material list</span></td><td><span class="hrs-badge">40 h</span></td><td><span class="date-badge date-start">May 1</span></td><td><span class="date-badge date-end">Jul 1</span></td></tr>
-              <tr><td><span class="step-num">5</span></td><td><strong>Create Material for CS1</strong> <span style="font-size:12px;color:var(--silver);display:block;">Blueprints, handouts, booklets</span></td><td><span class="hrs-badge">80 h</span></td><td><span class="date-badge date-start">Jul 1</span></td><td><span class="date-badge date-end">Oct 1</span></td></tr>
-              <tr><td><span class="step-num">6</span></td><td><strong>Develop CS2 Curriculum</strong> <span style="font-size:12px;color:var(--silver);display:block;">Objectives, macroplanning, material list</span></td><td><span class="hrs-badge">40 h</span></td><td><span class="date-badge date-start">May 1</span></td><td><span class="date-badge date-end">Aug 1</span></td></tr>
-              <tr><td><span class="step-num">7</span></td><td><strong>Create Material for CS2</strong> <span style="font-size:12px;color:var(--silver);display:block;">Blueprints, handouts, booklets</span></td><td><span class="hrs-badge">80 h</span></td><td><span class="date-badge date-start">Aug 1</span></td><td><span class="date-badge date-end">Nov 1</span></td></tr>
-              <tr class="phase-header"><td colspan="5">Phase 3 — Infrastructure, CS3 &amp; Complementary</td></tr>
-              <tr><td><span class="step-num">8</span></td><td><strong>Develop CS3 Curriculum</strong> <span style="font-size:12px;color:var(--silver);display:block;">Objectives, macroplanning, material list</span></td><td><span class="hrs-badge">40 h</span></td><td><span class="date-badge date-tbd">TBD</span></td><td><span class="date-badge date-tbd">TBD</span></td></tr>
-              <tr><td><span class="step-num">9</span></td><td><strong>Create Material for CS3</strong> <span style="font-size:12px;color:var(--silver);display:block;">Blueprints, handouts, booklets</span></td><td><span class="hrs-badge">80 h</span></td><td><span class="date-badge date-tbd">TBD</span></td><td><span class="date-badge date-tbd">TBD</span></td></tr>
-              <tr><td><span class="step-num">10</span></td><td><strong>Diffusion Platform</strong> <span style="font-size:12px;color:var(--silver);display:block;">Responsible: TBD</span></td><td><span class="hrs-badge">40 h</span></td><td><span class="date-badge date-start">May 1</span></td><td><span class="date-badge date-end">Sep 1</span></td></tr>
-              <tr><td><span class="step-num">11</span></td><td><strong>Train the Trainer</strong> <span style="font-size:12px;color:var(--silver);display:block;">Development of trainer program</span></td><td><span class="hrs-badge">40 h</span></td><td><span class="date-badge date-start">Jul 1</span></td><td><span class="date-badge date-end">Sep 1</span></td></tr>
-              <tr><td><span class="step-num">12</span></td><td><strong>Complementary Material</strong> <span style="font-size:12px;color:var(--silver);display:block;">Additional resources</span></td><td><span class="hrs-badge">80 h</span></td><td><span class="date-badge date-tbd">TBD</span></td><td><span class="date-badge date-tbd">TBD</span></td></tr>
-              <tr class="total-row"><td colspan="2" style="font-family:'DM Serif Display',serif;font-size:14px;">Total Estimated Effort</td><td><span class="hrs-badge" style="background:var(--navy);color:var(--gold);border-color:var(--navy);">665 h</span></td><td colspan="2"></td></tr>
-            </tbody>
+            <tbody id="milestones-table-body"></tbody>
           </table>
         </div>
       </div>
@@ -1217,6 +1317,62 @@ function forceScrollTop() {
 }
 
 const IS_FIREFOX = /firefox/i.test(navigator.userAgent);
+const INTRO_STORAGE_KEY = 'sanajiitIntroSeenV1';
+let introIndex = 0;
+
+function updateIntroTour() {
+  const slides = Array.from(document.querySelectorAll('.intro-slide'));
+  if (!slides.length) return;
+
+  slides.forEach((slide, idx) => {
+    slide.classList.toggle('active', idx === introIndex);
+  });
+
+  const step = document.getElementById('intro-step');
+  const prev = document.getElementById('intro-prev');
+  const next = document.getElementById('intro-next');
+  const start = document.getElementById('intro-start');
+  if (step) step.textContent = `${introIndex + 1} / ${slides.length}`;
+  if (prev) prev.disabled = introIndex === 0;
+  if (next) next.style.display = introIndex === slides.length - 1 ? 'none' : 'inline-flex';
+  if (start) start.style.display = introIndex === slides.length - 1 ? 'inline-flex' : 'none';
+}
+
+function openIntroTour() {
+  const overlay = document.getElementById('intro-overlay');
+  if (!overlay) return;
+  overlay.classList.add('show');
+  document.body.classList.add('intro-open');
+  introIndex = 0;
+  updateIntroTour();
+}
+
+function closeIntroTour(saveState) {
+  const overlay = document.getElementById('intro-overlay');
+  overlay?.classList.remove('show');
+  document.body.classList.remove('intro-open');
+  if (saveState) {
+    try {
+      localStorage.setItem(INTRO_STORAGE_KEY, '1');
+    } catch (e) {}
+  }
+}
+
+function changeIntroSlide(delta) {
+  const slides = document.querySelectorAll('.intro-slide');
+  const nextIndex = introIndex + delta;
+  if (nextIndex < 0 || nextIndex >= slides.length) return;
+  introIndex = nextIndex;
+  updateIntroTour();
+}
+
+function initIntroTour() {
+  let alreadySeen = false;
+  try {
+    alreadySeen = localStorage.getItem(INTRO_STORAGE_KEY) === '1';
+  } catch (e) {}
+  if (!alreadySeen) openIntroTour();
+}
 
 function generateRadar() {
   // Each section: { label, radioNames[] }
@@ -1605,6 +1761,80 @@ function toggleNav(){
   document.querySelector('.topnav')?.classList.toggle('open');
 }
 
+document.addEventListener('keydown', (event) => {
+  const overlay = document.getElementById('intro-overlay');
+  if (!overlay || !overlay.classList.contains('show')) return;
+  if (event.key === 'ArrowRight') changeIntroSlide(1);
+  if (event.key === 'ArrowLeft') changeIntroSlide(-1);
+  if (event.key === 'Escape') closeIntroTour(true);
+});
+
+initIntroTour();
+
+async function getMilestonesConfig() {
+  try {
+    const response = await fetch('milestones.json', { cache: 'no-store' });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch (e) {
+    // Fallback support if an inline JSON block is ever reintroduced.
+    const el = document.getElementById('milestones-config');
+    if (!el) return null;
+    try {
+      return JSON.parse(el.textContent);
+    } catch (err) {
+      return null;
+    }
+  }
+}
+
+function formatMilestoneDate(dateStr) {
+  if (!dateStr) return { text: 'TBD', css: 'date-tbd' };
+  const d = new Date(dateStr);
+  const text = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return { text, css: 'date-start' };
+}
+
+function formatMilestoneEndDate(dateStr) {
+  if (!dateStr) return { text: 'TBD', css: 'date-tbd' };
+  const d = new Date(dateStr);
+  const text = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  return { text, css: 'date-end' };
+}
+
+function renderMilestonesTable(config) {
+  const body = document.getElementById('milestones-table-body');
+  if (!body || !config) return;
+
+  const stepsByPhase = new Map();
+  config.phases.forEach(phase => stepsByPhase.set(phase.id, []));
+  config.steps.forEach(step => {
+    if (!stepsByPhase.has(step.phaseId)) stepsByPhase.set(step.phaseId, []);
+    stepsByPhase.get(step.phaseId).push(step);
+  });
+
+  let html = '';
+  config.phases.forEach(phase => {
+    const steps = stepsByPhase.get(phase.id) || [];
+    html += `<tr class="phase-header"><td colspan="5">${phase.title}</td></tr>`;
+    steps.forEach(step => {
+      const start = formatMilestoneDate(step.start);
+      const end = formatMilestoneEndDate(step.end);
+      html += `<tr>`;
+      html += `<td><span class="step-num">${step.id}</span></td>`;
+      html += `<td><strong>${step.title}</strong>${step.description ? ` <span style="font-size:12px;color:var(--silver);display:block;">${step.description}</span>` : ''}</td>`;
+      html += `<td><span class="hrs-badge">${step.hours} h</span></td>`;
+      html += `<td><span class="date-badge ${start.css}">${start.text}</span></td>`;
+      html += `<td><span class="date-badge ${end.css}">${end.text}</span></td>`;
+      html += `</tr>`;
+    });
+  });
+
+  const totalHours = config.steps.reduce((sum, step) => sum + (Number(step.hours) || 0), 0);
+  html += `<tr class="total-row"><td colspan="2" style="font-family:'DM Serif Display',serif;font-size:14px;">Total Estimated Effort</td><td><span class="hrs-badge" style="background:var(--navy);color:var(--gold);border-color:var(--navy);">${totalHours} h</span></td><td colspan="2"></td></tr>`;
+  body.innerHTML = html;
+}
+
 // Make the mobile survey options act like labels (clicking the row option selects its radio)
 document.addEventListener('click', (event) => {
   const opt = event.target.closest('.survey-opt');
@@ -1615,40 +1845,38 @@ document.addEventListener('click', (event) => {
 });
 
 // GANTT — precise date-driven, calendar-accurate month columns
-(function(){
-  // Chart spans Apr 1 → Dec 1 2026
-  const CHART_START = new Date('2026-04-01');
-  const CHART_END   = new Date('2026-12-01');
-  const TOTAL_DAYS  = (CHART_END - CHART_START) / 86400000; // 244 days
+(async function(){
+  const config = await getMilestonesConfig();
+  if (!config) return;
+
+  renderMilestonesTable(config);
+
+  const tasks = config.steps.filter(step => step.includeInGantt && step.start && step.end);
+  if (!tasks.length) return;
+
+  const starts = tasks.map(t => new Date(t.start));
+  const ends = tasks.map(t => new Date(t.end));
+  const minStart = new Date(Math.min(...starts));
+  const maxEnd = new Date(Math.max(...ends));
+
+  // Align chart to month boundaries for clean columns.
+  const CHART_START = new Date(minStart.getFullYear(), minStart.getMonth(), 1);
+  const computedChartEnd = new Date(maxEnd.getFullYear(), maxEnd.getMonth() + 1, 1);
+  // Keep the timeline extended through the full month of Jan 2027.
+  const minimumChartEnd = new Date(2027, 1, 1); // Feb 1, 2027 boundary
+  const CHART_END = computedChartEnd > minimumChartEnd ? computedChartEnd : minimumChartEnd;
+  const TOTAL_DAYS  = (CHART_END - CHART_START) / 86400000;
   const TODAY       = new Date('2026-03-11');
 
-  // Each month boundary as exact day offset from CHART_START
-  // Apr=30, May=31, Jun=30, Jul=31, Aug=31, Sep=30, Oct=31, Nov=30 → Dec=end
-  const monthBoundaries = [
-    { label:'Apr', dayStart: 0  },   // Apr 1
-    { label:'May', dayStart: 30 },   // May 1
-    { label:'Jun', dayStart: 61 },   // Jun 1
-    { label:'Jul', dayStart: 91 },   // Jul 1
-    { label:'Aug', dayStart: 122 },  // Aug 1
-    { label:'Sep', dayStart: 153 },  // Sep 1
-    { label:'Oct', dayStart: 183 },  // Oct 1
-    { label:'Nov', dayStart: 214 },  // Nov 1
-    { label:'Dec', dayStart: 244 },  // Dec 1 = chart end
-  ];
-
-  // Tasks from document — exact dates
-  // CS0 → green | CS1 → yellow | CS2 → orange | CS3 → red | Other/Infra → blue
-  const tasks = [
-    { id:1,  label:'1. Curriculum Structure',  short:'Curriculum Structure',  start:'2026-04-01', end:'2026-05-01', color:'#2563b0', group:'Other' },
-    { id:2,  label:'2. Develop CS0',            short:'Develop CS0',            start:'2026-05-01', end:'2026-06-01', color:'#2d9e7e', group:'CS0' },
-    { id:3,  label:'3. Material CS0',            short:'Material CS0',           start:'2026-06-01', end:'2026-08-01', color:'#2d9e7e', group:'CS0' },
-    { id:4,  label:'4. Develop CS1',             short:'Develop CS1',            start:'2026-05-01', end:'2026-07-01', color:'#d4a017', group:'CS1' },
-    { id:5,  label:'5. Material CS1',            short:'Material CS1',           start:'2026-07-01', end:'2026-10-01', color:'#d4a017', group:'CS1' },
-    { id:6,  label:'6. Develop CS2',             short:'Develop CS2',            start:'2026-05-01', end:'2026-08-01', color:'#e85d04', group:'CS2' },
-    { id:7,  label:'7. Material CS2',            short:'Material CS2',           start:'2026-08-01', end:'2026-11-01', color:'#e85d04', group:'CS2' },
-    { id:10, label:'10. Diffusion Platform',     short:'Platform',               start:'2026-05-01', end:'2026-09-01', color:'#2563b0', group:'Other' },
-    { id:11, label:'11. Train the Trainer',      short:'Train the Trainer',      start:'2026-07-01', end:'2026-09-01', color:'#2563b0', group:'Other' },
-  ];
+  const monthBoundaries = [];
+  let cursor = new Date(CHART_START);
+  while (cursor <= CHART_END) {
+    monthBoundaries.push({
+      label: cursor.toLocaleDateString('en-US', { month: 'short' }),
+      dayStart: (cursor - CHART_START) / 86400000,
+    });
+    cursor = new Date(cursor.getFullYear(), cursor.getMonth() + 1, 1);
+  }
 
   const LABEL_W = 200; // px width for task labels
   const ROW_H   = 36;
@@ -1656,28 +1884,24 @@ document.addEventListener('click', (event) => {
   const BAR_PAD = (ROW_H - BAR_H) / 2;
   const HEADER_H = 32;
   const TICK_H   = 20;
-  const MONTH_LABEL_H = 18;
-  const totalH = HEADER_H + tasks.length * ROW_H + 8;
-
   function dayOffset(dateStr) {
     const d = new Date(dateStr);
     return Math.max(0, (d - CHART_START) / 86400000);
   }
   function pct(days) { return (days / TOTAL_DAYS) * 100; }
+  function isSlowMonth(label) {
+    return label === 'Jul' || label === 'Aug';
+  }
 
   const todayOffset = (TODAY - CHART_START) / 86400000; // negative = before chart
 
   // Build legend
-  const phases = [
-    { label:'CS0', color:'#2d9e7e' },
-    { label:'CS1', color:'#d4a017' },
-    { label:'CS2', color:'#e85d04' },
-    { label:'CS3', color:'#c0392b' },
-    { label:'Other', color:'#2563b0' },
-
-  ];
+  const usedGroupKeys = [...new Set(tasks.map(t => t.group))].filter(key => key !== 'cs3');
+  const legendEntries = usedGroupKeys
+    .map(key => (config.groups || {})[key])
+    .filter(Boolean);
   let legendHtml = '';
-  phases.forEach(p=>{
+  legendEntries.forEach(p=>{
     legendHtml += `<div class="gantt-legend-item">
       <div class="gantt-legend-dot" style="background:${p.color};${p.isDot?'border-radius:50%;width:12px;height:12px;':''}"></div>
       <span>${p.label}</span>
@@ -1702,7 +1926,10 @@ document.addEventListener('click', (event) => {
   monthBoundaries.slice(0,-1).forEach((m,i)=>{
     const wDays = monthBoundaries[i+1].dayStart - m.dayStart;
     const wPct  = (wDays / TOTAL_DAYS) * 100;
-    html += `<div style="width:${wPct}%;text-align:center;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--silver);font-weight:600;display:flex;align-items:center;justify-content:center;border-left:1px solid rgba(255,255,255,.1);">${m.label}</div>`;
+    const slowMonthStyle = isSlowMonth(m.label)
+      ? 'background:rgba(201,168,76,.12);color:#e0d19e;'
+      : '';
+    html += `<div style="width:${wPct}%;text-align:center;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--silver);font-weight:600;display:flex;align-items:center;justify-content:center;border-left:1px solid rgba(255,255,255,.1);${slowMonthStyle}">${m.label}</div>`;
   });
   html += `</div></th></tr></thead><tbody>`;
 
@@ -1712,14 +1939,25 @@ document.addEventListener('click', (event) => {
     const e = dayOffset(t.end);
     const lp = pct(s);
     const wp = pct(e - s);
+    const group = config.groups[t.group] || config.groups.other;
+    const barColor = group?.color || '#2563b0';
     const bg = i % 2 === 0 ? 'var(--white)' : 'var(--bg)';
 
     html += `<tr style="background:${bg};border-bottom:1px solid rgba(15,31,61,.06);">
       <td style="padding:6px 12px 6px 8px;font-size:12px;color:var(--slate);line-height:1.3;vertical-align:middle;">
-        <strong style="color:var(--navy);font-size:12px;">${t.label}</strong>
+        <strong style="color:var(--navy);font-size:12px;">${t.id}. ${t.title}</strong>
       </td>
       <td style="padding:0;position:relative;height:${ROW_H}px;">
         <div style="position:relative;height:${ROW_H}px;overflow:hidden;">`;
+
+    // Summer slowdown visual band (July/August)
+    monthBoundaries.slice(0, -1).forEach((m, mi) => {
+      if (!isSlowMonth(m.label)) return;
+      const startPct = (m.dayStart / TOTAL_DAYS) * 100;
+      const endDay = monthBoundaries[mi + 1].dayStart;
+      const widthPct = ((endDay - m.dayStart) / TOTAL_DAYS) * 100;
+      html += `<div style="position:absolute;top:0;bottom:0;left:${startPct}%;width:${widthPct}%;background:repeating-linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.08) 8px,rgba(201,168,76,.04) 8px,rgba(201,168,76,.04) 16px);z-index:0;"></div>`;
+    });
 
     // Month grid lines — aligned to real calendar boundaries
     monthBoundaries.forEach((m)=>{
@@ -1736,13 +1974,13 @@ document.addEventListener('click', (event) => {
     }
 
     // Task bar
-    html += `<div style="position:absolute;top:${BAR_PAD}px;left:${lp}%;width:${wp}%;height:${BAR_H}px;background:${t.color};border-radius:4px;display:flex;align-items:center;padding:0 7px;min-width:4px;z-index:2;">
+    html += `<div style="position:absolute;top:${BAR_PAD}px;left:${lp}%;width:${wp}%;height:${BAR_H}px;background:${barColor};border-radius:4px;display:flex;align-items:center;padding:0 7px;min-width:4px;z-index:2;">
       <span style="font-size:10px;font-weight:600;color:white;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${t.short}</span>
     </div>`;
 
     // Start & end milestone dots
-    html += `<div style="position:absolute;top:50%;left:${lp}%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:white;border:2px solid ${t.color};z-index:4;"></div>`;
-    html += `<div style="position:absolute;top:50%;left:${pct(e)}%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:${t.color};border:2px solid white;box-shadow:0 0 0 1px ${t.color};z-index:4;"></div>`;
+    html += `<div style="position:absolute;top:50%;left:${lp}%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:white;border:2px solid ${barColor};z-index:4;"></div>`;
+    html += `<div style="position:absolute;top:50%;left:${pct(e)}%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:${barColor};border:2px solid white;box-shadow:0 0 0 1px ${barColor};z-index:4;"></div>`;
 
     html += `</div></td></tr>`;
   });

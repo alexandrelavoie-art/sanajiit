@@ -1,0 +1,169 @@
+{
+  "phases": [
+    {
+      "id": "phase-1",
+      "title": "Phase 1 — Structure & CS0"
+    },
+    {
+      "id": "phase-2",
+      "title": "Phase 2 — CS1 & CS2 (parallel streams)"
+    },
+    {
+      "id": "phase-3",
+      "title": "Phase 3 — Infrastructure, CS3 & Complementary"
+    }
+  ],
+  "groups": {
+    "cs0": { "label": "CS0", "color": "#2d9e7e" },
+    "cs1": { "label": "CS1", "color": "#d4a017" },
+    "cs2": { "label": "CS2", "color": "#e85d04" },
+    "cs3": { "label": "CS3", "color": "#c0392b" },
+    "other": { "label": "Other", "color": "#2563b0" }
+  },
+  "steps": [
+    {
+      "id": 1,
+      "phaseId": "phase-1",
+      "group": "other",
+      "title": "General Curriculum Structure",
+      "description": "CS0-CS3 overall structure",
+      "hours": 30,
+      "start": "2026-04-01",
+      "end": "2026-05-01",
+      "short": "Curriculum Structure",
+      "includeInGantt": true
+    },
+    {
+      "id": 2,
+      "phaseId": "phase-1",
+      "group": "cs0",
+      "title": "Develop CS0 Curriculum",
+      "description": "Objectives, macroplanning, pedagogical material list",
+      "hours": 40,
+      "start": "2026-05-01",
+      "end": "2026-06-01",
+      "short": "Develop CS0",
+      "includeInGantt": true
+    },
+    {
+      "id": 3,
+      "phaseId": "phase-1",
+      "group": "cs0",
+      "title": "Create Material for CS0",
+      "description": "Blueprints, handouts, student & teacher booklets",
+      "hours": 100,
+      "start": "2026-06-01",
+      "end": "2026-11-01",
+      "short": "Material CS0",
+      "includeInGantt": true
+    },
+    {
+      "id": 4,
+      "phaseId": "phase-2",
+      "group": "cs1",
+      "title": "Develop CS1 Curriculum",
+      "description": "Objectives, macroplanning, material list",
+      "hours": 40,
+      "start": "2026-05-01",
+      "end": "2026-07-01",
+      "short": "Develop CS1",
+      "includeInGantt": true
+    },
+    {
+      "id": 5,
+      "phaseId": "phase-2",
+      "group": "cs1",
+      "title": "Create Material for CS1",
+      "description": "Blueprints, handouts, booklets",
+      "hours": 100,
+      "start": "2026-07-01",
+      "end": "2026-12-01",
+      "short": "Material CS1",
+      "includeInGantt": true
+    },
+    {
+      "id": 6,
+      "phaseId": "phase-2",
+      "group": "cs2",
+      "title": "Develop CS2 Curriculum",
+      "description": "Objectives, macroplanning, material list",
+      "hours": 40,
+      "start": "2026-05-01",
+      "end": "2026-10-01",
+      "short": "Develop CS2",
+      "includeInGantt": true
+    },
+    {
+      "id": 7,
+      "phaseId": "phase-2",
+      "group": "cs2",
+      "title": "Create Material for CS2",
+      "description": "Blueprints, handouts, booklets",
+      "hours": 100,
+      "start": "2026-10-01",
+      "end": "2027-01-01",
+      "short": "Material CS2",
+      "includeInGantt": true
+    },
+    {
+      "id": 8,
+      "phaseId": "phase-3",
+      "group": "cs3",
+      "title": "Develop CS3 Curriculum",
+      "description": "Objectives, macroplanning, material list",
+      "hours": 40,
+      "start": null,
+      "end": null,
+      "short": "Develop CS3",
+      "includeInGantt": false
+    },
+    {
+      "id": 9,
+      "phaseId": "phase-3",
+      "group": "cs3",
+      "title": "Create Material for CS3",
+      "description": "Blueprints, handouts, booklets",
+      "hours": 100,
+      "start": null,
+      "end": null,
+      "short": "Material CS3",
+      "includeInGantt": false
+    },
+    {
+      "id": 10,
+      "phaseId": "phase-3",
+      "group": "other",
+      "title": "Diffusion Platform",
+      "description": "Responsible: TBD",
+      "hours": 80,
+      "start": "2026-05-01",
+      "end": "2027-01-01",
+      "short": "Platform",
+      "includeInGantt": true
+    },
+    {
+      "id": 11,
+      "phaseId": "phase-3",
+      "group": "other",
+      "title": "Train the Trainer",
+      "description": "Development of trainer program",
+      "hours": 80,
+      "start": "2026-09-01",
+      "end": "2027-01-01",
+      "short": "Train the Trainer",
+      "includeInGantt": true
+    },
+    {
+      "id": 12,
+      "phaseId": "phase-3",
+      "group": "other",
+      "title": "Complementary Material",
+      "description": "Additional resources",
+      "hours": 80,
+      "start": null,
+      "end": null,
+      "short": "Complementary",
+      "includeInGantt": false
+    }
+  ]
+}
