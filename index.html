@@ -366,6 +366,15 @@ body.intro-open{overflow:hidden;}
 .intro-slide.active .intro-point:nth-child(4){animation-delay:.12s;}
 .intro-point:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,31,61,.1);}
 .intro-point strong{color:var(--navy);font-weight:600;}
+.intro-presenters{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:620px){.intro-presenters{grid-template-columns:1fr;}}
+.intro-person{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(180deg,#ffffff,#f3f6ff);border:1px solid rgba(15,31,61,.1);border-radius:14px;padding:14px 12px;min-height:150px;box-shadow:0 3px 12px rgba(15,31,61,.06);}
+.intro-avatar{width:84px;height:84px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;letter-spacing:.5px;background:var(--navy);color:var(--gold-light);border:2px solid rgba(201,168,76,.5);flex-shrink:0;overflow:hidden;}
+.intro-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+.intro-avatar-fallback{display:none;align-items:center;justify-content:center;width:100%;height:100%;}
+.intro-person-meta{font-size:12px;color:var(--slate);line-height:1.25;text-align:center;}
+.intro-person-meta strong{display:block;color:var(--navy);font-size:14px;}
+.intro-person-email{display:block;margin-top:4px;font-size:11px;color:var(--silver);word-break:break-word;}
 .intro-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:14px 18px;border-top:1px solid rgba(15,31,61,.1);background:#fbfcff;}
 .intro-btn{border-radius:999px;padding:8px 14px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:700;cursor:pointer;}
 .intro-btn.ghost{border:1px solid rgba(15,31,61,.18);background:var(--white);color:var(--slate);}
@@ -421,6 +430,22 @@ body.intro-open{overflow:hidden;}
       <section class="intro-slide active">
         <h2 id="intro-title" class="intro-title"><span class="intro-title-icon">✨</span>Welcome!</h2>
         <p class="intro-sub">Welcome to our presentation of our Curriculum Development Proposal for the Sanajiit Essential Skills Program.</p>
+        <div class="intro-presenters">
+          <article class="intro-person">
+            <div class="intro-avatar" aria-hidden="true">
+              <img src="https://drive.google.com/thumbnail?id=14lkDN48AyHX_dd4gOjTXtojhoRxufk_p&sz=w200" alt="Alexandre" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="intro-avatar-fallback">AL</span>
+            </div>
+            <div class="intro-person-meta"><strong>Alexandre</strong><span class="intro-person-email">alexandre.lavoie@gmail.com</span></div>
+          </article>
+          <article class="intro-person">
+            <div class="intro-avatar" aria-hidden="true">
+              <img src="https://drive.google.com/thumbnail?id=18EYxVZsLSgPDSjuNbB5B55FWRI08_ate&sz=w200" alt="Jovan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+              <span class="intro-avatar-fallback">JO</span>
+            </div>
+            <div class="intro-person-meta"><strong>Jovan</strong><span class="intro-person-email">jovan.mercier8@gmail.com</span></div>
+          </article>
+        </div>
       </section>
       <section class="intro-slide">
         <h2 class="intro-title"><span class="intro-title-icon">🧭</span>Structure</h2>
