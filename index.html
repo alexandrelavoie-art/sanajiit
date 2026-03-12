@@ -185,6 +185,7 @@ body.intro-open{overflow:hidden;}
 .gantt-table tr.phase-header td{background:rgba(15,31,61,.05);font-family:'DM Serif Display',serif;font-size:13px;font-weight:700;color:var(--navy);padding:9px 11px;}
 .step-num{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;}
 .hrs-badge{display:inline-block;background:var(--bg);border:1px solid rgba(15,31,61,.12);border-radius:4px;padding:2px 7px;font-size:12px;color:var(--slate);}
+.hrs-badge.tbd{color:var(--silver);}
 .date-badge{display:inline-block;padding:2px 7px;font-size:11px;font-weight:500;border-radius:4px;}
 .date-start{background:rgba(45,106,79,.1);color:#2d6a4f;border:1px solid rgba(45,106,79,.2);}
 .date-end{background:var(--navy);color:var(--gold);}
@@ -1806,6 +1807,12 @@ function formatMilestoneEndDate(dateStr) {
   return { text, css: 'date-end' };
 }
 
+function formatMilestoneHours(hours) {
+  const n = Number(hours);
+  if (Number.isFinite(n)) return { text: `${n} h`, isTbd: false };
+  return { text: 'TBD', isTbd: true };
+}
+
 function renderMilestonesTable(config) {
   const body = document.getElementById('milestones-table-body');
   if (!body || !config) return;
@@ -1824,10 +1831,11 @@ function renderMilestonesTable(config) {
     steps.forEach(step => {
       const start = formatMilestoneDate(step.start);
       const end = formatMilestoneEndDate(step.end);
+      const hours = formatMilestoneHours(step.hours);
       html += `<tr>`;
       html += `<td><span class="step-num">${step.id}</span></td>`;
       html += `<td><strong>${step.title}</strong>${step.description ? ` <span style="font-size:12px;color:var(--silver);display:block;">${step.description}</span>` : ''}</td>`;
-      html += `<td><span class="hrs-badge">${step.hours} h</span></td>`;
+      html += `<td><span class="hrs-badge${hours.isTbd ? ' tbd' : ''}">${hours.text}</span></td>`;
       html += `<td><span class="date-badge ${start.css}">${start.text}</span></td>`;
       html += `<td><span class="date-badge ${end.css}">${end.text}</span></td>`;
       html += `</tr>`;
