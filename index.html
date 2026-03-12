@@ -1981,7 +1981,6 @@ document.addEventListener('click', (event) => {
     if(todayOffset >= 0 && todayOffset <= TOTAL_DAYS){
       const tp = pct(todayOffset);
       html += `<div style="position:absolute;top:0;bottom:0;left:${tp}%;width:2px;background:rgba(201,168,76,.7);z-index:3;">
-        ${i===0 ? `<div style="position:absolute;top:2px;left:4px;font-size:9px;color:var(--gold);font-weight:700;white-space:nowrap;">Today</div>` : ''}
       </div>`;
     }
 
@@ -1996,6 +1995,18 @@ document.addEventListener('click', (event) => {
 
     html += `</div></td></tr>`;
   });
+
+  if (todayOffset >= 0 && todayOffset <= TOTAL_DAYS) {
+    const tp = pct(todayOffset);
+    html += `<tr style="background:transparent;border-bottom:none;">
+      <td style="padding:0;height:18px;"></td>
+      <td style="padding:0;height:18px;position:relative;">
+        <div style="position:relative;height:18px;">
+          <span style="position:absolute;left:${tp}%;transform:translateX(-50%);bottom:1px;font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.4px;white-space:nowrap;">Today</span>
+        </div>
+      </td>
+    </tr>`;
+  }
 
   html += `</tbody></table></div>`;
 
