@@ -14,21 +14,26 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 .topnav-logo img{height:28px;filter:brightness(0) invert(1);}
 .topnav-logo-text{font-size:13px;font-weight:600;color:white;line-height:1.2;}
 .topnav-logo-text span{display:block;font-size:10px;font-weight:300;color:var(--silver);letter-spacing:1px;}
-.topnav-links{display:none;gap:2px;flex:1;overflow-x:auto;}
-.topnav-links a{color:var(--silver);text-decoration:none;font-size:12px;font-weight:500;padding:5px 12px;border-radius:6px;transition:background .15s,color .15s;white-space:nowrap;}
-.topnav-links a:hover,.topnav-links a.active{background:rgba(255,255,255,.08);color:white;}
-.topnav-links a.active{color:var(--gold);}
+.topnav-links{display:flex;gap:2px;flex:1;overflow-x:auto;align-items:center;}
+.topnav-drawer{display:none;position:fixed;top:56px;left:0;right:0;flex-direction:column;padding:10px 12px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);max-height:calc(100vh - 56px);overflow-y:auto;z-index:9998;}
+.topnav.open .topnav-drawer{display:flex;}
+.topnav-links a,.topnav-drawer a{color:var(--silver);text-decoration:none;font-size:12px;font-weight:500;padding:5px 12px;border-radius:6px;transition:background .15s,color .15s;white-space:nowrap;}
+.topnav-links a:hover,.topnav-links a.active,.topnav-drawer a:hover,.topnav-drawer a.active{background:rgba(255,255,255,.08);color:white;}
+.topnav-links a.active,.topnav-drawer a.active{color:var(--gold);}
 
-.topnav-toggle{cursor:pointer;flex-shrink:0;border:none;background:rgba(255,255,255,.92);color:var(--navy);font-size:20px;padding:0;line-height:1;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,.25);position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:calc(env(safe-area-inset-right,0px) + 12px);z-index:99999;pointer-events:auto;}
+.topnav-toggle{display:flex;cursor:pointer;flex-shrink:0;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.18);color:var(--gold-light);font-size:20px;padding:0;line-height:1;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,.25);backdrop-filter:blur(6px);position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:calc(env(safe-area-inset-right,0px) + 12px);z-index:99999;pointer-events:auto;}
+.topnav-toggle:hover{background:rgba(255,255,255,.28);}
 .topnav-toggle:focus{outline:2px solid rgba(201,168,76,.8);outline-offset:2px;}
-.topnav-toggle{display:flex!important;opacity:1!important;visibility:visible!important;}
-
-
-.topnav-links{position:fixed;top:56px;left:0;right:0;flex-direction:column;padding:10px 12px;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);max-height:calc(100vh - 56px);overflow-y:auto;z-index:9998;}
-.topnav.open .topnav-links{display:flex;}
-.topnav-links a{padding:10px 12px;white-space:normal;}
 .page{display:none;padding-top:56px;min-height:100vh;}
 .page.active{display:block;}
+@media(max-width:900px){
+  .topnav{padding:0 16px;}
+  .topnav-logo-text{font-size:12px;}
+  .topnav-logo-text span{font-size:9px;}
+  .topnav-links a{padding:5px 10px;}
+  .topnav-drawer a{padding:10px 12px;white-space:normal;width:100%;}
+  .topnav-toggle{display:flex;}
+}
 .page-hero{background:var(--navy);color:white;padding:52px 40px 68px;position:relative;overflow:hidden;}
 .page-hero::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:52px solid transparent;border-right:52px solid transparent;border-top:30px solid var(--navy);z-index:2;}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(201,168,76,.15) 1px,transparent 1px);background-size:28px 28px;}
@@ -252,13 +257,22 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
     <div class="topnav-logo-text">Sanajiit<span>Essential Skills · Kativik Ilisarniliriniq</span></div>
   </a>
   <div class="topnav-links">
-    <a href="#" onclick="showPage('overview');return false;" id="nav-overview" class="active">Overview</a>
-    <a href="#" onclick="showPage('cs0');return false;" id="nav-cs0">CS0 — Intro</a>
-    <a href="#" onclick="showPage('cs1');return false;" id="nav-cs1">CS1 — Shed</a>
-    <a href="#" onclick="showPage('cs2');return false;" id="nav-cs2">CS2 — Shelter</a>
-    <a href="#" onclick="showPage('cs3');return false;" id="nav-cs3">CS3 — Finish</a>
-    <a href="#" onclick="showPage('cs4');return false;" id="nav-cs4">CS4 — Internship</a>
-    <a href="#" onclick="showPage('milestones');return false;" id="nav-milestones">Milestones</a>
+    <a href="#" onclick="showPage('overview');return false;" class="nav-link active" data-page="overview">Overview</a>
+    <a href="#" onclick="showPage('cs0');return false;" class="nav-link" data-page="cs0">CS0 — Intro</a>
+    <a href="#" onclick="showPage('cs1');return false;" class="nav-link" data-page="cs1">CS1 — Shed</a>
+    <a href="#" onclick="showPage('cs2');return false;" class="nav-link" data-page="cs2">CS2 — Shelter</a>
+    <a href="#" onclick="showPage('cs3');return false;" class="nav-link" data-page="cs3">CS3 — Finish</a>
+    <a href="#" onclick="showPage('cs4');return false;" class="nav-link" data-page="cs4">CS4 — Internship</a>
+    <a href="#" onclick="showPage('milestones');return false;" class="nav-link" data-page="milestones">Milestones</a>
+  </div>
+  <div class="topnav-drawer">
+    <a href="#" onclick="showPage('overview');return false;" class="nav-link active" data-page="overview">Overview</a>
+    <a href="#" onclick="showPage('cs0');return false;" class="nav-link" data-page="cs0">CS0 — Intro</a>
+    <a href="#" onclick="showPage('cs1');return false;" class="nav-link" data-page="cs1">CS1 — Shed</a>
+    <a href="#" onclick="showPage('cs2');return false;" class="nav-link" data-page="cs2">CS2 — Shelter</a>
+    <a href="#" onclick="showPage('cs3');return false;" class="nav-link" data-page="cs3">CS3 — Finish</a>
+    <a href="#" onclick="showPage('cs4');return false;" class="nav-link" data-page="cs4">CS4 — Internship</a>
+    <a href="#" onclick="showPage('milestones');return false;" class="nav-link" data-page="milestones">Milestones</a>
   </div>
 </nav>
 <button type="button" class="topnav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
@@ -637,7 +651,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
         <!-- Section 2 -->
         <div class="ican-acc" id="ia-meas">
           <div class="ican-acc-trigger" onclick="toggleIcan('ia-meas')">
-            <span>📏 Mark &amp; Cut Material</span>
+            <span>📏 Measure &amp; Mark Material</span>
             <span class="ican-acc-chev" id="ichev-ia-meas">▶</span>
           </div>
           <div class="ican-acc-body" id="ibody-ia-meas">
@@ -652,13 +666,13 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
         <!-- Section 3 -->
         <div class="ican-acc" id="ia-setup">
           <div class="ican-acc-trigger" onclick="toggleIcan('ia-setup')">
-            <span>⚙️ Set Up Common Power Tools</span>
+            <span>⚙️ Set Up &amp; Use Common Power Tools</span>
             <span class="ican-acc-chev" id="ichev-ia-setup">▶</span>
           </div>
           <div class="ican-acc-body" id="ibody-ia-setup">
-            <div class="survey-subhead">Place in station · Choose &amp; change blade · Adjust position &amp; angle</div>
+            <div class="survey-subhead">Set up each tool safely and use it accurately for the task (station setup, blade/bit changes, adjustments, and execution)</div>
             <div class="survey-table">
-              <div class="survey-header"><span>I can set up…</span><span>Yes</span><span>Getting there</span><span>Not yet</span></div>
+              <div class="survey-header"><span>I can safely set up and use accurately…</span><span>Yes</span><span>Getting there</span><span>Not yet</span></div>
               <div class="survey-row"><div class="survey-stmt">Impact drill</div><div class="survey-opt"><input type="radio" name="ia-s-1"></div><div class="survey-opt"><input type="radio" name="ia-s-1"></div><div class="survey-opt"><input type="radio" name="ia-s-1"></div></div>
               <div class="survey-row"><div class="survey-stmt">Drill</div><div class="survey-opt"><input type="radio" name="ia-s-2"></div><div class="survey-opt"><input type="radio" name="ia-s-2"></div><div class="survey-opt"><input type="radio" name="ia-s-2"></div></div>
               <div class="survey-row"><div class="survey-stmt">Circular saw</div><div class="survey-opt"><input type="radio" name="ia-s-3"></div><div class="survey-opt"><input type="radio" name="ia-s-3"></div><div class="survey-opt"><input type="radio" name="ia-s-3"></div></div>
@@ -672,28 +686,6 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
         </div>
 
         <!-- Section 4 -->
-        <div class="ican-acc" id="ia-use">
-          <div class="ican-acc-trigger" onclick="toggleIcan('ia-use')">
-            <span>🪚 Use Common Power Tools</span>
-            <span class="ican-acc-chev" id="ichev-ia-use">▶</span>
-          </div>
-          <div class="ican-acc-body" id="ibody-ia-use">
-            <div class="survey-subhead">Execute a task accurately with each tool</div>
-            <div class="survey-table">
-              <div class="survey-header"><span>I can use accurately…</span><span>Yes</span><span>Getting there</span><span>Not yet</span></div>
-              <div class="survey-row"><div class="survey-stmt">Impact drill</div><div class="survey-opt"><input type="radio" name="ia-u-1"></div><div class="survey-opt"><input type="radio" name="ia-u-1"></div><div class="survey-opt"><input type="radio" name="ia-u-1"></div></div>
-              <div class="survey-row"><div class="survey-stmt">Drill</div><div class="survey-opt"><input type="radio" name="ia-u-2"></div><div class="survey-opt"><input type="radio" name="ia-u-2"></div><div class="survey-opt"><input type="radio" name="ia-u-2"></div></div>
-              <div class="survey-row"><div class="survey-stmt">Circular saw</div><div class="survey-opt"><input type="radio" name="ia-u-3"></div><div class="survey-opt"><input type="radio" name="ia-u-3"></div><div class="survey-opt"><input type="radio" name="ia-u-3"></div></div>
-              <div class="survey-row"><div class="survey-stmt">Miter saw</div><div class="survey-opt"><input type="radio" name="ia-u-4"></div><div class="survey-opt"><input type="radio" name="ia-u-4"></div><div class="survey-opt"><input type="radio" name="ia-u-4"></div></div>
-              <div class="survey-row"><div class="survey-stmt">Table saw</div><div class="survey-opt"><input type="radio" name="ia-u-5"></div><div class="survey-opt"><input type="radio" name="ia-u-5"></div><div class="survey-opt"><input type="radio" name="ia-u-5"></div></div>
-              <div class="survey-row"><div class="survey-stmt">Jig saw</div><div class="survey-opt"><input type="radio" name="ia-u-6"></div><div class="survey-opt"><input type="radio" name="ia-u-6"></div><div class="survey-opt"><input type="radio" name="ia-u-6"></div></div>
-              <div class="survey-row"><div class="survey-stmt">Reciprocating saw</div><div class="survey-opt"><input type="radio" name="ia-u-7"></div><div class="survey-opt"><input type="radio" name="ia-u-7"></div><div class="survey-opt"><input type="radio" name="ia-u-7"></div></div>
-              <div class="survey-row last"><div class="survey-stmt">Palm sander</div><div class="survey-opt"><input type="radio" name="ia-u-8"></div><div class="survey-opt"><input type="radio" name="ia-u-8"></div><div class="survey-opt"><input type="radio" name="ia-u-8"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Section 5 -->
         <div class="ican-acc" id="ia-asm">
           <div class="ican-acc-trigger" onclick="toggleIcan('ia-asm')">
             <span>🔩 Assemble Material</span>
@@ -709,7 +701,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
           </div>
         </div>
 
-        <!-- Section 6 -->
+        <!-- Section 5 -->
         <div class="ican-acc" id="ia-qc">
           <div class="ican-acc-trigger" onclick="toggleIcan('ia-qc')">
             <span>🔍 Check the Work</span>
@@ -727,7 +719,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
           </div>
         </div>
 
-        <!-- Section 7 -->
+        <!-- Section 6 -->
         <div class="ican-acc" style="border-bottom:none;" id="ia-aaa">
           <div class="ican-acc-trigger" onclick="toggleIcan('ia-aaa')">
             <span>🌟 Behave as a Professional — AAA</span>
@@ -912,9 +904,8 @@ function generateRadar() {
   // Scoring: Yes=2, Getting there=1, Not yet=0, unanswered=null
   const sections = [
     { label: 'Plan &\nOrganize',   names: ['ia-plan-1','ia-plan-2','ia-plan-3','ia-plan-4','ia-plan-5'] },
-    { label: 'Mark &\nCut',        names: ['ia-m-1','ia-m-2'] },
-    { label: 'Tool\nSetup',        names: ['ia-s-1','ia-s-2','ia-s-3','ia-s-4','ia-s-5','ia-s-6','ia-s-7','ia-s-8'] },
-    { label: 'Tool\nUse',          names: ['ia-u-1','ia-u-2','ia-u-3','ia-u-4','ia-u-5','ia-u-6','ia-u-7','ia-u-8'] },
+    { label: 'Measure &\nMark',    names: ['ia-m-1','ia-m-2'] },
+    { label: 'Tool\nSetup & Use',  names: ['ia-s-1','ia-s-2','ia-s-3','ia-s-4','ia-s-5','ia-s-6','ia-s-7','ia-s-8'] },
     { label: 'Assembly',           names: ['ia-a-1','ia-a-2','ia-a-3'] },
     { label: 'Quality\nCheck',     names: ['ia-q-1','ia-q-2','ia-q-3','ia-q-4'] },
     { label: 'AAA\nProfessionalism', names: ['ia-aaa-1','ia-aaa-2','ia-aaa-3','ia-aaa-4','ia-aaa-5','ia-aaa-6','ia-aaa-7','ia-aaa-8'] },
@@ -922,7 +913,7 @@ function generateRadar() {
 
   // Open all I Can accordions so radios are in the DOM
   sections.forEach((s, i) => {
-    const ids = ['ia-plan','ia-meas','ia-setup','ia-use','ia-asm','ia-qc','ia-aaa'];
+    const ids = ['ia-plan','ia-meas','ia-setup','ia-asm','ia-qc','ia-aaa'];
     const body = document.getElementById('ibody-' + ids[i]);
     const chev = document.getElementById('ichev-' + ids[i]);
     if (body && !body.classList.contains('open')) {
@@ -999,9 +990,9 @@ function generateRadar() {
   ctx.fillStyle = '#f4f6fa';
   ctx.fillRect(0, 0, W, H);
 
-  // Grid rings (2 levels: middle=Not yet, outer=Yes)
+  // Grid rings (2 levels: middle=Getting there, outer=Yes)
   const ringLevels = [0.5, 1.0];
-  const ringLabels = ['Not yet','Yes'];
+  const ringLabels = ['Getting there','Yes'];
   ringLevels.forEach((t, ri) => {
     ctx.beginPath();
     for (let i = 0; i < N; i++) {
@@ -1134,7 +1125,7 @@ function toggleIcan(id){
 }
 
 function collapseAllIcan(){
-  const ids = ['ia-plan','ia-meas','ia-setup','ia-use','ia-asm','ia-qc','ia-aaa'];
+  const ids = ['ia-plan','ia-meas','ia-setup','ia-asm','ia-qc','ia-aaa'];
   ids.forEach(id => {
     const body = document.getElementById('ibody-'+id);
     const chev = document.getElementById('ichev-'+id);
@@ -1153,10 +1144,10 @@ function toggleAcc(id){
 
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.topnav-links a').forEach(a=>a.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
-  document.getElementById('nav-'+id).classList.add('active');
-  // Close mobile nav after navigation
+  document.querySelectorAll(`.nav-link[data-page="${id}"]`).forEach(a=>a.classList.add('active'));
+  // Close drawer nav after navigation
   document.querySelector('.topnav')?.classList.remove('open');
   window.scrollTo(0,0);
 }
