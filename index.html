@@ -82,24 +82,23 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 .prog-bar{background:var(--bg);border-radius:6px;padding:8px 11px;font-size:12px;color:var(--slate);margin-bottom:7px;}
 .prog-bar strong{display:inline;color:var(--navy);}
 /* course strip */
-.course-strip{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;}
-.cs-strip-item{flex:1;min-width:110px;border-radius:8px;padding:14px 10px;cursor:pointer;transition:transform .15s,box-shadow .15s;text-align:center;}
+.course-strip{position:relative;display:grid;grid-template-columns:1fr;gap:14px;padding-left:28px;align-items:start;}
+.course-strip::before{content:'';position:absolute;top:0;bottom:0;left:10px;width:3px;border-radius:999px;background:linear-gradient(180deg,#2d9e7e 0%,#d4a017 25%,#e85d04 50%,#c0392b 75%,#2563b0 100%);opacity:.75;}
+.cs-strip-item{position:relative;border-radius:12px;padding:18px 16px 16px;cursor:pointer;transition:transform .15s,box-shadow .15s;text-align:left;min-width:0;}
+.cs-strip-item::before{content:'';position:absolute;top:18px;left:-27px;width:16px;height:16px;border-radius:50%;background:var(--white);border:4px solid currentColor;box-shadow:0 0 0 4px rgba(244,246,250,.95);}
 .cs-strip-item:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(15,31,61,.12);}
-.cs-strip-item.cs0{background:rgba(45,158,126,.1);border:2px solid #2d9e7e;}
-.cs-strip-item.cs1{background:rgba(212,160,23,.1);border:2px solid #d4a017;}
-.cs-strip-item.cs2{background:rgba(232,93,4,.1);border:2px solid #e85d04;}
-.cs-strip-item.cs3{background:rgba(192,57,43,.1);border:2px solid #c0392b;}
-.cs-strip-item.cs4{background:rgba(37,99,176,.1);border:2px solid #2563b0;}
-.cs-strip-badge{font-family:'DM Serif Display',serif;font-size:20px;font-weight:700;margin-bottom:4px;}
-.cs-strip-item.cs0 .cs-strip-badge{color:#2d9e7e;}
-.cs-strip-item.cs1 .cs-strip-badge{color:#d4a017;}
-.cs-strip-item.cs2 .cs-strip-badge{color:#e85d04;}
-.cs-strip-item.cs3 .cs-strip-badge{color:#c0392b;}
-.cs-strip-item.cs4 .cs-strip-badge{color:#2563b0;}
-.cs-strip-title{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:2px;}
-.cs-strip-days{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--silver);font-weight:600;margin-bottom:5px;}
-.cs-strip-desc{font-size:11px;color:var(--slate);line-height:1.4;}
-.cs-strip-arrow{display:flex;align-items:center;padding:0 2px;font-size:16px;color:var(--silver);flex-shrink:0;}
+.cs-strip-item.cs0{background:rgba(45,158,126,.1);border:2px solid #2d9e7e;color:#2d9e7e;}
+.cs-strip-item.cs1{background:rgba(212,160,23,.1);border:2px solid #d4a017;color:#d4a017;}
+.cs-strip-item.cs2{background:rgba(232,93,4,.1);border:2px solid #e85d04;color:#e85d04;}
+.cs-strip-item.cs3{background:rgba(192,57,43,.1);border:2px solid #c0392b;color:#c0392b;}
+.cs-strip-item.cs4{background:rgba(37,99,176,.1);border:2px solid #2563b0;color:#2563b0;}
+.cs-strip-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;}
+.cs-strip-badge{font-family:'DM Serif Display',serif;font-size:22px;font-weight:700;line-height:1;color:currentColor;}
+.cs-strip-title{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.cs-strip-days{display:inline-block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--silver);font-weight:600;padding:3px 8px;background:rgba(255,255,255,.58);border-radius:999px;flex-shrink:0;}
+.cs-strip-desc{font-size:12px;color:var(--slate);line-height:1.5;}
+.cs-strip-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.cs-strip-tag{display:inline-flex;align-items:center;padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.62);border:1px solid rgba(15,31,61,.08);font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--navy);}
 /* accordion */
 .accordion{border-bottom:1px solid rgba(15,31,61,.08);}
 .acc-trigger{display:flex;align-items:center;justify-content:space-between;padding:15px 4px;cursor:pointer;user-select:none;transition:background .15s;border-radius:6px;}
@@ -174,7 +173,8 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 .cs-placeholder-badge{font-family:'DM Serif Display',serif;font-size:30px;color:var(--silver);margin-bottom:9px;}
 .cs-placeholder-title{font-size:15px;font-weight:600;color:var(--silver);margin-bottom:5px;}
 .cs-placeholder-sub{font-size:12.5px;color:#b0bcd0;}
-.cs-placeholder-tag{display:inline-block;margin-top:13px;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:rgba(15,31,61,.07);color:var(--silver);padding:4px 13px;border-radius:20px;}
+.cs-placeholder-tag{display:inline-block;margin-top:13px;font-size:10px;letter-spacing:2px;text-transform:uppercase;background:rgba(15,31,61,.07);color:var(--silver);padding:4px 13px;border-radius:20px;text-decoration:none;}
+.cs-placeholder-tag:hover{background:rgba(15,31,61,.12);color:var(--navy);}
 /* milestones */
 .gantt-wrapper{overflow-x:auto;}
 .gantt-table{width:100%;border-collapse:collapse;min-width:640px;}
@@ -302,38 +302,34 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
       <div class="card-body" style="padding:18px 24px;">
         <div class="course-strip">
           <div class="cs-strip-item cs0" onclick="showPage('cs0')">
-            <div class="cs-strip-badge">CS0</div>
+            <div class="cs-strip-meta"><div class="cs-strip-badge">CS0</div><div class="cs-strip-days">5 days</div></div>
             <div class="cs-strip-title">Intro</div>
-            <div class="cs-strip-days">5 days</div>
-            <div class="cs-strip-desc">Foundations — tools, measurement, safety</div>
+            <div class="cs-strip-desc">Foundational skills, essential tools, and the habits of a professional.</div>
+            <div class="cs-strip-tags"><span class="cs-strip-tag">Safety</span><span class="cs-strip-tag">Measurement</span><span class="cs-strip-tag">Essential Tools</span></div>
           </div>
-          <div class="cs-strip-arrow">→</div>
           <div class="cs-strip-item cs1" onclick="showPage('cs1')">
-            <div class="cs-strip-badge">CS1</div>
+            <div class="cs-strip-meta"><div class="cs-strip-badge">CS1</div><div class="cs-strip-days">10 days</div></div>
             <div class="cs-strip-title">Shed</div>
-            <div class="cs-strip-days">10 days</div>
-            <div class="cs-strip-desc">Autonomy &amp; problem solving</div>
+            <div class="cs-strip-desc">Focused on autonomy, problem solving, and real shed construction — building on the foundations of CS0.</div>
+            <div class="cs-strip-tags"><span class="cs-strip-tag">Shed Build</span><span class="cs-strip-tag">Autonomy</span><span class="cs-strip-tag">Problem Solving</span></div>
           </div>
-          <div class="cs-strip-arrow">→</div>
           <div class="cs-strip-item cs2" onclick="showPage('cs2')">
-            <div class="cs-strip-badge">CS2</div>
+            <div class="cs-strip-meta"><div class="cs-strip-badge">CS2</div><div class="cs-strip-days">10 days</div></div>
             <div class="cs-strip-title">Shelter</div>
-            <div class="cs-strip-days">10 days</div>
-            <div class="cs-strip-desc">Insulated structures, worksite emulation</div>
+            <div class="cs-strip-desc">Constructing larger insulated structures in a worksite-emulation environment, deepening technical and professional skills.</div>
+            <div class="cs-strip-tags"><span class="cs-strip-tag">Insulation</span><span class="cs-strip-tag">Worksite Emulation</span><span class="cs-strip-tag">Building Envelope</span></div>
           </div>
-          <div class="cs-strip-arrow">→</div>
           <div class="cs-strip-item cs3" onclick="showPage('cs3')">
-            <div class="cs-strip-badge">CS3</div>
+            <div class="cs-strip-meta"><div class="cs-strip-badge">CS3</div><div class="cs-strip-days">TBD</div></div>
             <div class="cs-strip-title">Finish</div>
-            <div class="cs-strip-days">TBD</div>
-            <div class="cs-strip-desc">Interior finish, stairs &amp; deck</div>
+            <div class="cs-strip-desc">Interior finishing, stairs, deck framing — preparing students for the full range of residential construction tasks.</div>
+            <div class="cs-strip-tags"><span class="cs-strip-tag">Interior Finish</span><span class="cs-strip-tag">Stairs</span><span class="cs-strip-tag">Deck Framing</span></div>
           </div>
-          <div class="cs-strip-arrow">→</div>
           <div class="cs-strip-item cs4" onclick="showPage('cs4')">
-            <div class="cs-strip-badge">CS4</div>
+            <div class="cs-strip-meta"><div class="cs-strip-badge">CS4</div><div class="cs-strip-days">TBD</div></div>
             <div class="cs-strip-title">Internship</div>
-            <div class="cs-strip-days">TBD</div>
-            <div class="cs-strip-desc">Real jobsite — houses in Nunavik</div>
+            <div class="cs-strip-desc">Real jobsite experience — renovation or construction of houses, supervised by contractors and teachers on site.</div>
+            <div class="cs-strip-tags"><span class="cs-strip-tag">Internship</span><span class="cs-strip-tag">Real Jobsite</span><span class="cs-strip-tag">Nunavik Housing</span></div>
           </div>
         </div>
       </div>
@@ -768,7 +764,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 <div class="page" id="page-cs1">
   <div class="page-hero"><div class="hero-dots"></div><div class="hero-inner"><p class="hero-label">Detailed Curriculum</p><h1 class="hero-h1">CS1 — <em>Shed</em></h1><p class="hero-sub">10 days focused on autonomy, problem solving, and real shed construction — building on the foundations of CS0.</p></div></div>
   <div class="flow" style="padding-top:44px;">
-    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS1 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><span class="cs-placeholder-tag">In development · Target: Oct 2026</span></div>
+    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS1 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><a href="#" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">In development · Curriculum target: Jul 2026</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:13px;">Known Objectives</div>
       <div class="obj-list">
@@ -785,7 +781,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 <div class="page" id="page-cs2">
   <div class="page-hero"><div class="hero-dots"></div><div class="hero-inner"><p class="hero-label">Detailed Curriculum</p><h1 class="hero-h1">CS2 — <em>Insulated Shelter</em></h1><p class="hero-sub">10 days constructing larger insulated structures in a worksite-emulation environment, deepening technical and professional skills.</p></div></div>
   <div class="flow" style="padding-top:44px;">
-    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS2 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><span class="cs-placeholder-tag">In development · Target: Nov 2026</span></div>
+    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS2 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><a href="#" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">In development · Curriculum target: Aug 2026</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:13px;">Known Objectives</div>
       <div class="obj-list">
@@ -801,7 +797,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 <div class="page" id="page-cs3">
   <div class="page-hero"><div class="hero-dots"></div><div class="hero-inner"><p class="hero-label">Detailed Curriculum</p><h1 class="hero-h1">CS3 — <em>Interior Finish</em></h1><p class="hero-sub">Interior finishing, stairs, deck framing — preparing students for the full range of residential construction tasks.</p></div></div>
   <div class="flow" style="padding-top:44px;">
-    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS3 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">Scope and timeline are still being defined for this course.</div><span class="cs-placeholder-tag">Scope &amp; timeline TBD</span></div>
+    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS3 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">Scope and timeline are still being defined for this course.</div><a href="#" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">Curriculum timeline TBD</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:13px;">Planned Scope</div>
       <div class="obj-list">
@@ -819,7 +815,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 <div class="page" id="page-cs4">
   <div class="page-hero"><div class="hero-dots"></div><div class="hero-inner"><p class="hero-label">Detailed Curriculum</p><h1 class="hero-h1">CS4 — <em>Internship</em></h1><p class="hero-sub">Real jobsite experience — renovation or construction of houses, supervised by contractors and teachers on site.</p></div></div>
   <div class="flow" style="padding-top:44px;">
-    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS4 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This course is currently being scoped.<br>Duration, structure, and partner employers are still being defined.</div><span class="cs-placeholder-tag">Scope &amp; timeline TBD</span></div>
+    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS4 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This course is currently being scoped.<br>Duration, structure, and partner employers are still being defined.</div><a href="#" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">Curriculum timeline TBD</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:13px;">Known Structure</div>
       <div class="obj-list">
