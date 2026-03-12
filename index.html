@@ -1194,6 +1194,16 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 </footer>
 
 <script>
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+function forceScrollTop() {
+  window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+}
+
 function generateRadar() {
   // Each section: { label, radioNames[] }
   // Scoring: Yes=2, Getting there=1, Not yet=0, unanswered=null
@@ -1558,7 +1568,13 @@ function showPage(id){
   document.querySelectorAll(`.nav-link[data-page="${id}"]`).forEach(a=>a.classList.add('active'));
   // Close drawer nav after navigation
   document.querySelector('.topnav')?.classList.remove('open');
-  window.scrollTo(0,0);
+  // Force top immediately and again after layout settles to avoid sticky scroll position.
+  forceScrollTop();
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      forceScrollTop();
+    });
+  });
 }
 
 function toggleNav(){
