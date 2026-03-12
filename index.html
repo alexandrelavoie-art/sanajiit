@@ -1199,10 +1199,24 @@ if ('scrollRestoration' in history) {
 }
 
 function forceScrollTop() {
+  const root = document.documentElement;
+  const body = document.body;
+  const prevRootBehavior = root.style.scrollBehavior;
+  const prevBodyBehavior = body.style.scrollBehavior;
+
+  // Temporarily disable smooth scrolling so route changes always snap to top.
+  root.style.scrollBehavior = 'auto';
+  body.style.scrollBehavior = 'auto';
+
   window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0;
+  root.scrollTop = 0;
+  body.scrollTop = 0;
+
+  root.style.scrollBehavior = prevRootBehavior;
+  body.style.scrollBehavior = prevBodyBehavior;
 }
+
+const IS_FIREFOX = /firefox/i.test(navigator.userAgent);
 
 function generateRadar() {
   // Each section: { label, radioNames[] }
@@ -1564,7 +1578,8 @@ function togglePortfolioView(){
 function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
+  const activePage = document.getElementById('page-'+id);
+  activePage.classList.add('active');
   document.querySelectorAll(`.nav-link[data-page="${id}"]`).forEach(a=>a.classList.add('active'));
   // Close drawer nav after navigation
   document.querySelector('.topnav')?.classList.remove('open');
@@ -1573,8 +1588,17 @@ function showPage(id){
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       forceScrollTop();
+      if (IS_FIREFOX) {
+        // Firefox can keep stale scroll offsets on display:none -> block transitions.
+        activePage?.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'auto' });
+      }
     });
   });
+  if (IS_FIREFOX) {
+    setTimeout(() => {
+      forceScrollTop();
+    }, 80);
+  }
 }
 
 function toggleNav(){
