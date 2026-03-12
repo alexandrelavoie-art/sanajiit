@@ -1038,7 +1038,7 @@ body.intro-open{overflow:hidden;}
     </div>
   </div>
   <div class="flow" style="padding-top:44px;">
-    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS1 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><a href="javascript:void(0)" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">In development · Curriculum target: Jul 2026</a></div>
+    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS1 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><a id="curriculum-target-cs1" href="javascript:void(0)" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">In development · Curriculum target: TBD</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:13px;">Known Objectives</div>
       <div class="obj-list">
@@ -1065,7 +1065,7 @@ body.intro-open{overflow:hidden;}
     </div>
   </div>
   <div class="flow" style="padding-top:44px;">
-    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS2 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><a href="javascript:void(0)" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">In development · Curriculum target: Aug 2026</a></div>
+    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS2 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><a id="curriculum-target-cs2" href="javascript:void(0)" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">In development · Curriculum target: TBD</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:13px;">Known Objectives</div>
       <div class="obj-list">
@@ -1091,7 +1091,7 @@ body.intro-open{overflow:hidden;}
     </div>
   </div>
   <div class="flow" style="padding-top:44px;">
-    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS3 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">Scope and timeline are still being defined for this course.</div><a href="javascript:void(0)" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">Curriculum timeline TBD</a></div>
+    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS3 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">Scope and timeline are still being defined for this course.</div><a id="curriculum-target-cs3" href="javascript:void(0)" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">Curriculum timeline TBD</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:13px;">Planned Scope</div>
       <div class="obj-list">
@@ -1119,7 +1119,7 @@ body.intro-open{overflow:hidden;}
     </div>
   </div>
   <div class="flow" style="padding-top:44px;">
-    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS4 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This course is currently being scoped.<br>Duration, structure, and partner employers are still being defined.</div><a href="javascript:void(0)" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">Curriculum timeline TBD</a></div>
+    <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS4 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This course is currently being scoped.<br>Duration, structure, and partner employers are still being defined.</div><a id="curriculum-target-cs4" href="javascript:void(0)" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">Curriculum timeline TBD</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
       <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:13px;">Known Structure</div>
       <div class="obj-list">
@@ -1820,22 +1820,71 @@ async function getMilestonesConfig() {
 
 function formatMilestoneDate(dateStr) {
   if (!dateStr) return { text: 'TBD', css: 'date-tbd' };
-  const d = new Date(dateStr);
+  const d = parseMilestoneDate(dateStr);
   const text = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   return { text, css: 'date-start' };
 }
 
 function formatMilestoneEndDate(dateStr) {
   if (!dateStr) return { text: 'TBD', css: 'date-tbd' };
-  const d = new Date(dateStr);
+  const d = parseMilestoneDate(dateStr);
   const text = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   return { text, css: 'date-end' };
+}
+
+function parseMilestoneDate(dateStr) {
+  const m = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return new Date(dateStr);
+  const year = Number(m[1]);
+  const monthIndex = Number(m[2]) - 1;
+  const day = Number(m[3]);
+  return new Date(year, monthIndex, day);
 }
 
 function formatMilestoneHours(hours) {
   const n = Number(hours);
   if (Number.isFinite(n)) return { text: `${n} h`, isTbd: false };
   return { text: 'TBD', isTbd: true };
+}
+
+function formatMilestoneMonthYear(dateStr) {
+  if (!dateStr) return 'TBD';
+  const d = parseMilestoneDate(dateStr);
+  if (Number.isNaN(d.getTime())) return 'TBD';
+  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+function getCurriculumDeliveryDate(config, code) {
+  const matchers = {
+    cs1: /Develop CS1 Curriculum/i,
+    cs2: /Develop CS2 Curriculum/i,
+    cs3: /Develop CS3 Curriculum/i,
+    cs4: /Develop CS4 Curriculum/i
+  };
+  const matcher = matchers[code];
+  if (!matcher) return null;
+  const step = (config.steps || []).find(s => matcher.test(s.title || ''));
+  return step?.end || null;
+}
+
+function renderCurriculumDeliveryDates(config) {
+  const targets = [
+    { code: 'cs1', elementId: 'curriculum-target-cs1' },
+    { code: 'cs2', elementId: 'curriculum-target-cs2' },
+    { code: 'cs3', elementId: 'curriculum-target-cs3' },
+    { code: 'cs4', elementId: 'curriculum-target-cs4' }
+  ];
+
+  targets.forEach(target => {
+    const el = document.getElementById(target.elementId);
+    if (!el) return;
+    const endDate = getCurriculumDeliveryDate(config, target.code);
+    if (endDate) {
+      el.textContent = `In development · Curriculum target: ${formatMilestoneMonthYear(endDate)}`;
+      return;
+    }
+    el.textContent = 'Curriculum timeline TBD';
+  });
 }
 
 function renderMilestonesTable(config) {
@@ -1891,19 +1940,24 @@ document.addEventListener('click', (event) => {
   const tasks = config.steps.filter(step => step.includeInGantt && step.start && step.end);
   if (!tasks.length) return;
 
-  const starts = tasks.map(t => new Date(t.start));
-  const ends = tasks.map(t => new Date(t.end));
+  const starts = tasks.map(t => parseMilestoneDate(t.start));
+  const ends = tasks.map(t => parseMilestoneDate(t.end));
   const minStart = new Date(Math.min(...starts));
   const maxEnd = new Date(Math.max(...ends));
 
   // Align chart to month boundaries for clean columns.
-  const CHART_START = new Date(minStart.getFullYear(), minStart.getMonth(), 1);
+  const computedChartStart = new Date(minStart.getFullYear(), minStart.getMonth(), 1);
+  // Keep March 2026 visible even if the first task starts in April.
+  const minimumChartStart = new Date(2026, 2, 1); // Mar 1, 2026 boundary
+  const CHART_START = computedChartStart < minimumChartStart ? computedChartStart : minimumChartStart;
   const computedChartEnd = new Date(maxEnd.getFullYear(), maxEnd.getMonth() + 1, 1);
   // Keep the timeline extended through the full month of Jan 2027.
   const minimumChartEnd = new Date(2027, 1, 1); // Feb 1, 2027 boundary
   const CHART_END = computedChartEnd > minimumChartEnd ? computedChartEnd : minimumChartEnd;
   const TOTAL_DAYS  = (CHART_END - CHART_START) / 86400000;
   const TODAY       = new Date('2026-03-11');
+
+  renderCurriculumDeliveryDates(config);
 
   const monthBoundaries = [];
   let cursor = new Date(CHART_START);
@@ -1922,7 +1976,7 @@ document.addEventListener('click', (event) => {
   const HEADER_H = 32;
   const TICK_H   = 20;
   function dayOffset(dateStr) {
-    const d = new Date(dateStr);
+    const d = parseMilestoneDate(dateStr);
     return Math.max(0, (d - CHART_START) / 86400000);
   }
   function pct(days) { return (days / TOTAL_DAYS) * 100; }
