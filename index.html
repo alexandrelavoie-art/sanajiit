@@ -247,6 +247,89 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 .gantt-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px;}
 .gantt-legend-item{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--slate);}
 .gantt-legend-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+/* portfolio */
+.portfolio-intro{font-size:13px;color:var(--silver);line-height:1.65;max-width:720px;}
+.portfolio-summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px;}
+@media(max-width:760px){.portfolio-summary-grid{grid-template-columns:1fr;}}
+.portfolio-summary-item{background:var(--bg);border:1px solid rgba(15,31,61,.08);border-radius:10px;padding:14px;}
+.portfolio-summary-thumb{height:140px;border-radius:8px;overflow:hidden;margin-bottom:10px;background:linear-gradient(135deg,var(--navy),var(--navy2));border:1px solid rgba(15,31,61,.1);}
+.portfolio-summary-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.portfolio-summary-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:7px;}
+.portfolio-summary-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.portfolio-summary-desc{font-size:12px;color:var(--slate);line-height:1.5;}
+.portfolio-link-btn{display:inline-flex;align-items:center;justify-content:center;margin-top:16px;background:var(--navy);color:var(--gold);border:1px solid rgba(201,168,76,.45);padding:8px 14px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:background .15s,color .15s,border-color .15s;}
+.portfolio-link-btn:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.portfolio-filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 16px;}
+.portfolio-filter-pill{display:inline-flex;align-items:center;padding:5px 11px;border-radius:999px;background:var(--bg);border:1px solid rgba(15,31,61,.1);font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--slate);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+@media(max-width:860px){.portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:560px){.portfolio-grid{grid-template-columns:1fr;}}
+.portfolio-section{grid-column:1/-1;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:10px;border:1px solid rgba(15,31,61,.1);border-left:4px solid var(--gold);background:linear-gradient(90deg,rgba(201,168,76,.16),rgba(255,255,255,.95));}
+.portfolio-section:not(:first-child){margin-top:6px;}
+.portfolio-section-title{font-family:'DM Serif Display',serif;font-size:21px;color:var(--navy);}
+.portfolio-section-count{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--navy);background:rgba(255,255,255,.75);padding:4px 8px;border-radius:999px;border:1px solid rgba(15,31,61,.08);}
+.portfolio-card{display:flex;flex-direction:column;background:var(--white);border:1px solid rgba(15,31,61,.08);border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(15,31,61,.08);transition:transform .15s,box-shadow .15s;}
+.portfolio-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,31,61,.14);}
+.portfolio-thumb{position:relative;height:130px;display:flex;align-items:flex-end;justify-content:flex-start;padding:10px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:white;overflow:hidden;}
+.portfolio-thumb::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(201,168,76,.16) 1px,transparent 1px);background-size:22px 22px;}
+.portfolio-thumb span{position:relative;z-index:1;font-family:'DM Serif Display',serif;font-size:22px;line-height:1;color:var(--gold-light);}
+.portfolio-type{position:absolute;top:9px;right:9px;z-index:1;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(4px);padding:4px 7px;border-radius:999px;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:700;color:var(--gold-light);}
+.portfolio-body{padding:13px 13px 14px;display:flex;flex-direction:column;gap:9px;flex:1;}
+.portfolio-title{font-size:14px;font-weight:600;color:var(--navy);line-height:1.35;}
+.portfolio-meta{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600;color:var(--silver);}
+.portfolio-desc{font-size:12px;color:var(--slate);line-height:1.55;flex:1;}
+.portfolio-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.portfolio-cta{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;padding:6px 10px;border-radius:999px;border:1px solid rgba(15,31,61,.15);color:var(--navy);background:var(--bg);}
+.portfolio-cta.primary{background:var(--navy);border-color:var(--navy);color:var(--gold-light);}
+.portfolio-hosting-note{margin-top:18px;background:rgba(201,168,76,.11);border:1px solid rgba(201,168,76,.34);border-radius:9px;padding:12px 14px;font-size:12px;color:var(--slate);line-height:1.6;}
+.portfolio-library{display:flex;flex-direction:column;gap:16px;}
+.portfolio-topic{border:1px solid rgba(15,31,61,.1);border-radius:10px;overflow:hidden;background:var(--white);}
+.portfolio-topic-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;background:linear-gradient(90deg,rgba(201,168,76,.18),rgba(255,255,255,.95));border:0;border-bottom:1px solid rgba(15,31,61,.08);cursor:pointer;text-align:left;}
+.portfolio-topic-trigger h3{font-family:'DM Serif Display',serif;font-size:20px;color:var(--navy);}
+.portfolio-topic-right{display:flex;align-items:center;gap:8px;}
+.portfolio-topic-count{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--navy);background:rgba(255,255,255,.8);padding:4px 8px;border-radius:999px;border:1px solid rgba(15,31,61,.1);}
+.portfolio-topic-chev{font-size:12px;color:var(--silver);transition:transform .22s;}
+.portfolio-topic-chev.open{transform:rotate(90deg);}
+.portfolio-topic-list{display:none;flex-direction:column;}
+.portfolio-topic-list.open{display:flex;}
+.portfolio-resource{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid rgba(15,31,61,.08);}
+.portfolio-resource:last-child{border-bottom:none;}
+.portfolio-resource-title{font-size:14px;font-weight:600;color:var(--navy);line-height:1.35;margin-bottom:4px;}
+.portfolio-resource-meta{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;font-weight:600;color:var(--silver);margin-bottom:4px;}
+.portfolio-resource-desc{font-size:12px;color:var(--slate);line-height:1.5;}
+.portfolio-view-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
+.portfolio-view-switch{display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;}
+.portfolio-header-switch{margin-left:auto;}
+.portfolio-view-text{font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--silver);}
+.portfolio-view-switch.is-gallery .portfolio-view-text.right,.portfolio-view-switch:not(.is-gallery) .portfolio-view-text.left{color:var(--navy);}
+.portfolio-view-track{position:relative;width:58px;height:30px;border-radius:999px;background:rgba(15,31,61,.16);border:1px solid rgba(15,31,61,.14);display:inline-flex;align-items:center;padding:3px;transition:background .2s;}
+.portfolio-view-switch.is-gallery .portfolio-view-track{background:rgba(15,31,61,.7);}
+.portfolio-view-thumb{width:22px;height:22px;border-radius:50%;background:var(--white);box-shadow:0 2px 6px rgba(0,0,0,.2);transform:translateX(0);transition:transform .2s;}
+.portfolio-view-switch.is-gallery .portfolio-view-thumb{transform:translateX(28px);}
+.portfolio-group-controls{display:none;align-items:center;gap:7px;}
+.portfolio-group-controls.show{display:flex;}
+.portfolio-group-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--silver);}
+.portfolio-group-btn{border:1px solid rgba(15,31,61,.12);background:var(--bg);color:var(--slate);font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;border-radius:999px;padding:5px 10px;cursor:pointer;}
+.portfolio-group-btn.active{background:var(--navy);color:var(--gold-light);border-color:var(--navy);}
+.portfolio-view-panel{display:none;}
+.portfolio-view-panel.active{display:block;}
+.portfolio-gallery-groups{display:flex;flex-direction:column;gap:16px;}
+.portfolio-gallery-group{border:1px solid rgba(15,31,61,.1);border-radius:10px;overflow:hidden;background:var(--white);}
+.portfolio-gallery-group-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 13px;background:linear-gradient(90deg,rgba(201,168,76,.15),rgba(255,255,255,.95));border-bottom:1px solid rgba(15,31,61,.08);}
+.portfolio-gallery-group-head h3{font-family:'DM Serif Display',serif;font-size:18px;color:var(--navy);}
+.portfolio-gallery-group-count{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;color:var(--silver);}
+.portfolio-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:12px;}
+@media(max-width:900px){.portfolio-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:560px){.portfolio-gallery-grid{grid-template-columns:1fr;}}
+.portfolio-gallery-card{border:1px solid rgba(15,31,61,.1);border-radius:10px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column;}
+.portfolio-gallery-thumb{height:126px;background:linear-gradient(135deg,var(--navy),var(--navy2));}
+.portfolio-gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.portfolio-gallery-thumb img.logo-fit{object-fit:contain;background:#ffffff;padding:16px;}
+.portfolio-gallery-body{padding:10px 10px 12px;display:flex;flex-direction:column;gap:7px;}
+.portfolio-gallery-meta{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--silver);}
+.portfolio-gallery-title{font-size:13px;font-weight:600;color:var(--navy);line-height:1.35;}
+.portfolio-gallery-desc{font-size:12px;color:var(--slate);line-height:1.45;flex:1;}
+@media(max-width:640px){.portfolio-resource{grid-template-columns:1fr;}.portfolio-resource .portfolio-cta{justify-self:start;}}
 </style>
 </head>
 <body>
@@ -264,6 +347,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
     <a href="#" onclick="showPage('cs3');return false;" class="nav-link" data-page="cs3">CS3 — Finish</a>
     <a href="#" onclick="showPage('cs4');return false;" class="nav-link" data-page="cs4">CS4 — Internship</a>
     <a href="#" onclick="showPage('milestones');return false;" class="nav-link" data-page="milestones">Milestones</a>
+    <a href="#" onclick="showPage('portfolio');return false;" class="nav-link" data-page="portfolio">Portfolio</a>
   </div>
   <div class="topnav-drawer">
     <a href="#" onclick="showPage('overview');return false;" class="nav-link active" data-page="overview">Overview</a>
@@ -273,6 +357,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
     <a href="#" onclick="showPage('cs3');return false;" class="nav-link" data-page="cs3">CS3 — Finish</a>
     <a href="#" onclick="showPage('cs4');return false;" class="nav-link" data-page="cs4">CS4 — Internship</a>
     <a href="#" onclick="showPage('milestones');return false;" class="nav-link" data-page="milestones">Milestones</a>
+    <a href="#" onclick="showPage('portfolio');return false;" class="nav-link" data-page="portfolio">Portfolio</a>
   </div>
 </nav>
 <button type="button" class="topnav-toggle" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
@@ -288,6 +373,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
       <div class="hero-anchors">
         <a class="hero-anchor" href="#anc-prog">↓ Program Progression</a>
         <a class="hero-anchor" href="#anc-pillars">↓ Three Pillars</a>
+        <a class="hero-anchor" href="#anc-portfolio">↓ Portfolio</a>
       </div>
     </div>
   </div>
@@ -463,6 +549,40 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
       </div>
     </div>
 
+    <div class="connector"><div class="connector-line"></div><div class="connector-label">Pedagogical resources in one place</div><div class="connector-line2"></div></div>
+
+    <span class="section-anchor" id="anc-portfolio"></span>
+    <div class="card">
+      <div class="card-header"><div class="card-icon">🗂️</div><div><div class="card-step">Resource Library</div><div class="card-title">Portfolio Snapshot</div></div></div>
+      <div class="card-body">
+        <p class="portfolio-intro">This portfolio includes a selection of materials created over the years for students and teachers. These resources are provided for demonstration purposes only and should not be downloaded or shared.</p>
+        <div class="portfolio-summary-grid">
+          <article class="portfolio-summary-item">
+            <div class="portfolio-summary-thumb"><img src="https://drive.google.com/thumbnail?id=1vvWpkP3ta0J8jKuoqiBdv7fMSknPoPaH&amp;sz=w1200" alt="Presentation of teaching approach thumbnail" loading="lazy"></div>
+            <div class="portfolio-summary-label">Presentation</div>
+            <h3 class="portfolio-summary-title">Presentation of our teaching approach at FNAESC symposium: from foreman to leader to teacher</h3>
+            <p class="portfolio-summary-desc">Conference presentation introducing the Sanajiit pedagogical approach.</p>
+            <a href="https://drive.google.com/file/d/1vvWpkP3ta0J8jKuoqiBdv7fMSknPoPaH/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
+          </article>
+          <article class="portfolio-summary-item">
+            <div class="portfolio-summary-thumb"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201200%20675%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%230f1f3d%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%231a3260%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%271200%27%20height%3D%27675%27%20fill%3D%27url(%23g)%27/%3E%3Ccircle%20cx%3D%27600%27%20cy%3D%27337.5%27%20r%3D%27120%27%20fill%3D%27rgba(255%2C255%2C255%2C0.1)%27%20stroke%3D%27%23f0e0a8%27%20stroke-width%3D%274%27/%3E%3Cpolygon%20points%3D%27560%2C270%20560%2C405%20680%2C337.5%27%20fill%3D%27%23f0e0a8%27/%3E%3C/svg%3E" alt="Project 1 interactive video capsules thumbnail" loading="lazy"></div>
+            <div class="portfolio-summary-label">Interactive video</div>
+            <h3 class="portfolio-summary-title">Project 1 - Interactive video capsules</h3>
+            <p class="portfolio-summary-desc">Interactive module with guided video capsules for Project 1.</p>
+            <a href="https://learnful.ca/module/763/launch" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
+          </article>
+          <article class="portfolio-summary-item">
+            <div class="portfolio-summary-thumb"><img src="https://drive.google.com/thumbnail?id=1YxAEZjURS-DCysWR2Apk9dqSaiV7kFbs&amp;sz=w1200" alt="AAA Policy thumbnail" loading="lazy"></div>
+            <div class="portfolio-summary-label">Policy</div>
+            <h3 class="portfolio-summary-title">AAA Policy (developped by Western Quebec School Board)</h3>
+            <p class="portfolio-summary-desc">Reference policy used to support classroom and employability expectations.</p>
+            <a href="https://drive.google.com/file/d/1YxAEZjURS-DCysWR2Apk9dqSaiV7kFbs/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
+          </article>
+        </div>
+        <a href="#" class="portfolio-link-btn" onclick="showPage('portfolio');return false;">Open Full Portfolio</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -475,6 +595,7 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
       <h1 class="hero-h1">CS0 — <em>Intro</em></h1>
       <p class="hero-sub">5 days · Foundational skills, essential tools, and the habits of a professional.</p>
       <div class="hero-anchors">
+        <a class="hero-anchor" href="#" onclick="showPage('overview');return false;">← Back to Overview</a>
         <a class="hero-anchor" href="#cs0-obj">↓ Objectives</a>
         <a class="hero-anchor" href="#cs0-skills">↓ Skills</a>
         <a class="hero-anchor" href="#cs0-ican">↓ I Can Statements</a>
@@ -762,7 +883,17 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 
 <!-- ═══════ PAGE: CS1 ═══════ -->
 <div class="page" id="page-cs1">
-  <div class="page-hero"><div class="hero-dots"></div><div class="hero-inner"><p class="hero-label">Detailed Curriculum</p><h1 class="hero-h1">CS1 — <em>Shed</em></h1><p class="hero-sub">10 days focused on autonomy, problem solving, and real shed construction — building on the foundations of CS0.</p></div></div>
+  <div class="page-hero">
+    <div class="hero-dots"></div>
+    <div class="hero-inner">
+      <p class="hero-label">Detailed Curriculum</p>
+      <h1 class="hero-h1">CS1 — <em>Shed</em></h1>
+      <p class="hero-sub">10 days focused on autonomy, problem solving, and real shed construction — building on the foundations of CS0.</p>
+      <div class="hero-anchors">
+        <a class="hero-anchor" href="#" onclick="showPage('overview');return false;">← Back to Overview</a>
+      </div>
+    </div>
+  </div>
   <div class="flow" style="padding-top:44px;">
     <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS1 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><a href="#" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">In development · Curriculum target: Jul 2026</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
@@ -779,7 +910,17 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 
 <!-- ═══════ PAGE: CS2 ═══════ -->
 <div class="page" id="page-cs2">
-  <div class="page-hero"><div class="hero-dots"></div><div class="hero-inner"><p class="hero-label">Detailed Curriculum</p><h1 class="hero-h1">CS2 — <em>Insulated Shelter</em></h1><p class="hero-sub">10 days constructing larger insulated structures in a worksite-emulation environment, deepening technical and professional skills.</p></div></div>
+  <div class="page-hero">
+    <div class="hero-dots"></div>
+    <div class="hero-inner">
+      <p class="hero-label">Detailed Curriculum</p>
+      <h1 class="hero-h1">CS2 — <em>Insulated Shelter</em></h1>
+      <p class="hero-sub">10 days constructing larger insulated structures in a worksite-emulation environment, deepening technical and professional skills.</p>
+      <div class="hero-anchors">
+        <a class="hero-anchor" href="#" onclick="showPage('overview');return false;">← Back to Overview</a>
+      </div>
+    </div>
+  </div>
   <div class="flow" style="padding-top:44px;">
     <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS2 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This detailed curriculum is currently being developed.<br>Check the Milestones page for the expected delivery date.</div><a href="#" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">In development · Curriculum target: Aug 2026</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
@@ -795,7 +936,17 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 
 <!-- ═══════ PAGE: CS3 ═══════ -->
 <div class="page" id="page-cs3">
-  <div class="page-hero"><div class="hero-dots"></div><div class="hero-inner"><p class="hero-label">Detailed Curriculum</p><h1 class="hero-h1">CS3 — <em>Interior Finish</em></h1><p class="hero-sub">Interior finishing, stairs, deck framing — preparing students for the full range of residential construction tasks.</p></div></div>
+  <div class="page-hero">
+    <div class="hero-dots"></div>
+    <div class="hero-inner">
+      <p class="hero-label">Detailed Curriculum</p>
+      <h1 class="hero-h1">CS3 — <em>Interior Finish</em></h1>
+      <p class="hero-sub">Interior finishing, stairs, deck framing — preparing students for the full range of residential construction tasks.</p>
+      <div class="hero-anchors">
+        <a class="hero-anchor" href="#" onclick="showPage('overview');return false;">← Back to Overview</a>
+      </div>
+    </div>
+  </div>
   <div class="flow" style="padding-top:44px;">
     <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS3 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">Scope and timeline are still being defined for this course.</div><a href="#" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">Curriculum timeline TBD</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
@@ -813,7 +964,17 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
 
 <!-- ═══════ PAGE: CS4 ═══════ -->
 <div class="page" id="page-cs4">
-  <div class="page-hero"><div class="hero-dots"></div><div class="hero-inner"><p class="hero-label">Detailed Curriculum</p><h1 class="hero-h1">CS4 — <em>Internship</em></h1><p class="hero-sub">Real jobsite experience — renovation or construction of houses, supervised by contractors and teachers on site.</p></div></div>
+  <div class="page-hero">
+    <div class="hero-dots"></div>
+    <div class="hero-inner">
+      <p class="hero-label">Detailed Curriculum</p>
+      <h1 class="hero-h1">CS4 — <em>Internship</em></h1>
+      <p class="hero-sub">Real jobsite experience — renovation or construction of houses, supervised by contractors and teachers on site.</p>
+      <div class="hero-anchors">
+        <a class="hero-anchor" href="#" onclick="showPage('overview');return false;">← Back to Overview</a>
+      </div>
+    </div>
+  </div>
   <div class="flow" style="padding-top:44px;">
     <div class="cs-placeholder"><div class="cs-placeholder-badge">🔒</div><div class="cs-placeholder-title">CS4 Curriculum — Coming Soon</div><div class="cs-placeholder-sub">This course is currently being scoped.<br>Duration, structure, and partner employers are still being defined.</div><a href="#" class="cs-placeholder-tag" onclick="showPage('milestones');return false;">Curriculum timeline TBD</a></div>
     <div style="margin-top:22px;background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(15,31,61,.06);padding:24px;">
@@ -827,6 +988,143 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
   </div>
 </div>
 
+<!-- ═══════ PAGE: PORTFOLIO ═══════ -->
+<div class="page" id="page-portfolio">
+  <div class="page-hero">
+    <div class="hero-dots"></div>
+    <div class="hero-inner">
+      <p class="hero-label">Pedagogical Resource Library</p>
+      <h1 class="hero-h1"><em>Portfolio</em> Resources</h1>
+      <p class="hero-sub">Notice: This portfolio includes a selection of materials created over the years for students and teachers. These resources are provided for demonstration purposes only and should not be downloaded or shared.</p>
+      <div class="hero-anchors">
+        <a class="hero-anchor" href="#" onclick="showPage('overview');return false;">← Back to Overview</a>
+        <a class="hero-anchor" href="#port-grid">↓ Browse Resources</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow">
+    <div class="connector"><div class="connector-line"></div><div class="connector-label">Browse by resource type</div><div class="connector-line2"></div></div>
+
+    <span class="section-anchor" id="port-grid"></span>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🗃️</div>
+        <div>
+          <div class="card-step">Library View</div>
+          <div class="card-title">Resource Index by Section</div>
+        </div>
+        <div id="portfolio-view-switch" class="portfolio-view-switch portfolio-header-switch" role="switch" aria-checked="false" onclick="togglePortfolioView()">
+          <span class="portfolio-view-text left">List</span>
+          <span class="portfolio-view-track"><span class="portfolio-view-thumb"></span></span>
+          <span class="portfolio-view-text right">Gallery</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="portfolio-view-toolbar">
+          <div id="portfolio-group-controls" class="portfolio-group-controls">
+            <span class="portfolio-group-label">Group by</span>
+            <button type="button" id="portfolio-group-section" class="portfolio-group-btn active" onclick="setPortfolioGroup('section')">Section</button>
+            <button type="button" id="portfolio-group-type" class="portfolio-group-btn" onclick="setPortfolioGroup('type')">Type</button>
+          </div>
+        </div>
+
+        <div id="portfolio-list-view" class="portfolio-view-panel active">
+        <div class="portfolio-library">
+          <section class="portfolio-topic">
+            <button type="button" class="portfolio-topic-trigger" onclick="togglePortfolioTopic('symposium')"><h3>Symposium Presentation</h3><span class="portfolio-topic-right"><span class="portfolio-topic-count">1 resource</span><span class="portfolio-topic-chev open" id="portchev-symposium">▶</span></span></button>
+            <div class="portfolio-topic-list open" id="portbody-symposium">
+              <article class="portfolio-resource">
+                <div>
+                  <div class="portfolio-resource-title">Presentation of our teaching approach at FNAESC symposium: from foreman to leader to teacher</div>
+                  <div class="portfolio-resource-meta">Presentation</div>
+                  <div class="portfolio-resource-desc">Resource imported from your portfolio CSV and linked to the public library.</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1vvWpkP3ta0J8jKuoqiBdv7fMSknPoPaH/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
+              </article>
+            </div>
+          </section>
+
+          <section class="portfolio-topic">
+            <button type="button" class="portfolio-topic-trigger" onclick="togglePortfolioTopic('intro')"><h3>Intro</h3><span class="portfolio-topic-right"><span class="portfolio-topic-count">2 resources</span><span class="portfolio-topic-chev" id="portchev-intro">▶</span></span></button>
+            <div class="portfolio-topic-list" id="portbody-intro">
+              <article class="portfolio-resource">
+                <div>
+                  <div class="portfolio-resource-title">AAA Policy (developped by Western Quebec School Board)</div>
+                  <div class="portfolio-resource-meta">Document</div>
+                  <div class="portfolio-resource-desc">Reference policy document used in the introductory employability context.</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1YxAEZjURS-DCysWR2Apk9dqSaiV7kFbs/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
+              </article>
+              <article class="portfolio-resource">
+                <div>
+                  <div class="portfolio-resource-title">Trade and Training Booklet</div>
+                  <div class="portfolio-resource-meta">Booklet</div>
+                  <div class="portfolio-resource-desc">Training booklet positioned in the introductory resource set.</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1VckgSz3qkTnBbmSiX1fy61rYA09352Kn/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
+              </article>
+            </div>
+          </section>
+
+          <section class="portfolio-topic">
+            <button type="button" class="portfolio-topic-trigger" onclick="togglePortfolioTopic('terminology')"><h3>Terminology</h3><span class="portfolio-topic-right"><span class="portfolio-topic-count">5 resources</span><span class="portfolio-topic-chev" id="portchev-terminology">▶</span></span></button>
+            <div class="portfolio-topic-list" id="portbody-terminology">
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Glossary of house construction terminology</div><div class="portfolio-resource-meta">Document</div><div class="portfolio-resource-desc">Glossary supporting construction vocabulary acquisition.</div></div><a href="https://drive.google.com/file/d/1kfunyGfdbQ--qrZWlMLnlQp28pCl0LZw/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">3D house animation</div><div class="portfolio-resource-meta">Video</div><div class="portfolio-resource-desc">Interactive support to visualize house components in 3D.</div></div><a href="https://monurl.ca/house3d" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Wall-section component booklet</div><div class="portfolio-resource-meta">Booklet</div><div class="portfolio-resource-desc">Booklet on wall-section parts and structure components.</div></div><a href="https://drive.google.com/file/d/1ALh3XJtW57fghdqKlJx80dJ4JS-smtHk/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Wall-section component poster</div><div class="portfolio-resource-meta">Handout</div><div class="portfolio-resource-desc">Poster format for quick classroom and workshop reference.</div></div><a href="https://drive.google.com/file/d/1Ku3kXh9QBbuk00tO97NyEJyIFe2cErds/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Components flashcard</div><div class="portfolio-resource-meta">Handout</div><div class="portfolio-resource-desc">Flashcard resource for component memorization and review.</div></div><a href="https://drive.google.com/file/d/1TOAG9hSpM308Bhk8CLg_6R8oDh-V9bfe/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+            </div>
+          </section>
+
+          <section class="portfolio-topic">
+            <button type="button" class="portfolio-topic-trigger" onclick="togglePortfolioTopic('warmup')"><h3>Warm-up</h3><span class="portfolio-topic-right"><span class="portfolio-topic-count">4 resources</span><span class="portfolio-topic-chev" id="portchev-warmup">▶</span></span></button>
+            <div class="portfolio-topic-list" id="portbody-warmup">
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Miter cuts</div><div class="portfolio-resource-meta">Exercise</div><div class="portfolio-resource-desc">Warm-up exercise focused on miter cut precision.</div></div><a href="https://drive.google.com/file/d/1VVgvdl0cOS3u5oTZuUnl4HaUbOuAI43_/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Joints</div><div class="portfolio-resource-meta">Exercise</div><div class="portfolio-resource-desc">Practice resource focused on basic joints.</div></div><a href="https://drive.google.com/file/d/1MaK9VTndNf5wriHdOEGXxxEIgP-BKILO/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Curves</div><div class="portfolio-resource-meta">Exercise</div><div class="portfolio-resource-desc">Warm-up activity for curved cuts and tracing techniques.</div></div><a href="https://drive.google.com/file/d/1yYLbN5LfLj4VuIDYIyu3Oa-00_wKoUSF/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Workbench</div><div class="portfolio-resource-meta">Project</div><div class="portfolio-resource-desc">Construction of a workbench.</div></div><a href="https://drive.google.com/file/d/1EsHc0amixjGMomTvxzcmcfk7oPeJ3qeQ/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+            </div>
+          </section>
+
+          <section class="portfolio-topic">
+            <button type="button" class="portfolio-topic-trigger" onclick="togglePortfolioTopic('framing')"><h3>Framing</h3><span class="portfolio-topic-right"><span class="portfolio-topic-count">2 resources</span><span class="portfolio-topic-chev" id="portchev-framing">▶</span></span></button>
+            <div class="portfolio-topic-list" id="portbody-framing">
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Ponywall</div><div class="portfolio-resource-meta">Project</div><div class="portfolio-resource-desc">Framing project resource for ponywall construction.</div></div><a href="https://drive.google.com/file/d/1gmXIn1HlpDNWPgms9Xg-p6eQPn3bQRTx/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Shed</div><div class="portfolio-resource-meta">Project</div><div class="portfolio-resource-desc">Framing project material for shed construction.</div></div><a href="https://drive.google.com/file/d/1L-HoLdv0R3GsfqwSaN1ajcSV8SRHQtOc/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+            </div>
+          </section>
+
+          <section class="portfolio-topic">
+            <button type="button" class="portfolio-topic-trigger" onclick="togglePortfolioTopic('columns')"><h3>Columns</h3><span class="portfolio-topic-right"><span class="portfolio-topic-count">5 resources</span><span class="portfolio-topic-chev" id="portchev-columns">▶</span></span></button>
+            <div class="portfolio-topic-list" id="portbody-columns">
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Project 1 - Blueprint</div><div class="portfolio-resource-meta">Blueprint</div><div class="portfolio-resource-desc">Primary blueprint used for Columns project 1.</div></div><a href="https://drive.google.com/file/d/1Rv0ONvYdih0f48NySRDsHq-_xBrj57gl/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Project 1 - Step-by-step visual guidebook</div><div class="portfolio-resource-meta">Guidebook</div><div class="portfolio-resource-desc">Visual guidebook presenting step-by-step project execution.</div></div><a href="https://drive.google.com/file/d/1YWLRnTzPJywi22lAwEr-MHxQiK4W7iUk/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Project 1 - Interactive video capsules</div><div class="portfolio-resource-meta">Interactive video</div><div class="portfolio-resource-desc">Interactive learning module with video capsules.</div></div><a href="https://learnful.ca/module/763/launch" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Project 1 - 3D model</div><div class="portfolio-resource-meta">3D model</div><div class="portfolio-resource-desc">SketchUp 3D model supporting visualization.</div></div><a href="https://app.sketchup.com/share/tc/northAmerica/bfL1lJej-pE?source=web&amp;stoken=doizHM-m9x7oAt4I6MwvLT_8VxljDfxTpcn8_yn-UgzUqGuaOU0VKR6XyW5dOkXx" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Project 2 - Blueprint </div><div class="portfolio-resource-meta">Blueprint</div><div class="portfolio-resource-desc">Additional columns project resource material.</div></div><a href="https://drive.google.com/file/d/1WskBqbjgOdQDUkHzj15fhkcNi337JD70/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+            </div>
+          </section>
+
+          <section class="portfolio-topic">
+            <button type="button" class="portfolio-topic-trigger" onclick="togglePortfolioTopic('stairs')"><h3>Stairs</h3><span class="portfolio-topic-right"><span class="portfolio-topic-count">2 resources</span><span class="portfolio-topic-chev" id="portchev-stairs">▶</span></span></button>
+            <div class="portfolio-topic-list" id="portbody-stairs">
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Student booklet</div><div class="portfolio-resource-meta">Booklet</div><div class="portfolio-resource-desc">Student booklet for stair construction activities.</div></div><a href="https://drive.google.com/file/d/14f9Ch0WK24egEnQZbFgosylRNZTDFn-O/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+              <article class="portfolio-resource"><div><div class="portfolio-resource-title">Stairs formulas 3D animation</div><div class="portfolio-resource-meta">Interactive video</div><div class="portfolio-resource-desc">3D animation module focused on staircase formulas and visualization.</div></div><a href="https://learnful.ca/h5p/778/launch" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a></article>
+            </div>
+          </section>
+        </div>
+        </div>
+
+        <div id="portfolio-gallery-view" class="portfolio-view-panel">
+          <div id="portfolio-gallery-render" class="portfolio-gallery-groups"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ═══════ PAGE: MILESTONES ═══════ -->
 <div class="page" id="page-milestones">
   <div class="page-hero">
@@ -834,8 +1132,9 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;font-weight:300;color
     <div class="hero-inner">
       <p class="hero-label">Program Development</p>
       <h1 class="hero-h1"><em>Milestones</em> &amp; Timeline</h1>
-      <p class="hero-sub">All development steps with start dates, deadlines, and estimated hours. Total effort: 665 h across 3 phases.</p>
+      <p class="hero-sub">Notice: development steps with start dates, deadlines, and estimated hours are for conversation purposes and do not constitute a definitive proposal.</p>
       <div class="hero-anchors">
+        <a class="hero-anchor" href="#" onclick="showPage('overview');return false;">← Back to Overview</a>
         <a class="hero-anchor" href="#ms-table">↓ Step Table</a>
         <a class="hero-anchor" href="#ms-gantt">↓ Visual Gantt</a>
       </div>
@@ -1136,6 +1435,120 @@ function toggleAcc(id){
   const isOpen = body.classList.contains('open');
   body.classList.toggle('open', !isOpen);
   chev.classList.toggle('open', !isOpen);
+}
+
+function togglePortfolioTopic(id){
+  const body = document.getElementById('portbody-' + id);
+  const chev = document.getElementById('portchev-' + id);
+  if (!body || !chev) return;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
+
+let portfolioViewMode = 'list';
+let portfolioGroupMode = 'section';
+let portfolioItemsCache = null;
+const GENERIC_PLAY_THUMB = "data:image/svg+xml;utf8," + encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#0f1f3d'/><stop offset='100%' stop-color='#1a3260'/></linearGradient></defs><rect width='1200' height='675' fill='url(#g)'/><circle cx='600' cy='337.5' r='120' fill='rgba(255,255,255,0.1)' stroke='#f0e0a8' stroke-width='4'/><polygon points='560,270 560,405 680,337.5' fill='#f0e0a8'/></svg>");
+
+function extractDriveId(url){
+  const m = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  return m ? m[1] : null;
+}
+
+function getPortfolioThumb(url, type){
+  const t = (type || '').toLowerCase();
+  if (t === 'video' || t === 'interactive video') return GENERIC_PLAY_THUMB;
+  if (/sketchup\.com/i.test(url)) return 'https://cdn.simpleicons.org/sketchup/005f9e';
+  const driveId = extractDriveId(url);
+  if (driveId) return `https://drive.google.com/thumbnail?id=${driveId}&sz=w1200`;
+  return `https://image.thum.io/get/width/1200/${encodeURIComponent(url)}`;
+}
+
+function getPortfolioItems(){
+  if (portfolioItemsCache) return portfolioItemsCache;
+  const items = [];
+  document.querySelectorAll('#portfolio-list-view .portfolio-topic').forEach(sectionEl => {
+    const section = (sectionEl.querySelector('h3')?.textContent || 'Other').trim();
+    sectionEl.querySelectorAll('.portfolio-resource').forEach(resourceEl => {
+      const title = (resourceEl.querySelector('.portfolio-resource-title')?.textContent || '').trim();
+      const type = (resourceEl.querySelector('.portfolio-resource-meta')?.textContent || 'Resource').trim();
+      const desc = (resourceEl.querySelector('.portfolio-resource-desc')?.textContent || '').trim();
+      const url = resourceEl.querySelector('a.portfolio-cta.primary')?.getAttribute('href') || '#';
+      items.push({ section, title, type, desc, url });
+    });
+  });
+  portfolioItemsCache = items;
+  return items;
+}
+
+function renderPortfolioGallery(){
+  const container = document.getElementById('portfolio-gallery-render');
+  if (!container) return;
+  const items = getPortfolioItems();
+  const grouped = new Map();
+
+  items.forEach(item => {
+    let key;
+    if (portfolioGroupMode === 'type') {
+      const t = item.type.toLowerCase();
+      key = (t === 'video' || t === 'interactive video') ? 'Video' : item.type;
+    } else {
+      key = item.section;
+    }
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(item);
+  });
+
+  let html = '';
+  grouped.forEach((groupItems, groupName) => {
+    html += `<section class="portfolio-gallery-group">`;
+    html += `<div class="portfolio-gallery-group-head"><h3>${groupName}</h3><span class="portfolio-gallery-group-count">${groupItems.length} item${groupItems.length > 1 ? 's' : ''}</span></div>`;
+    html += `<div class="portfolio-gallery-grid">`;
+    groupItems.forEach(item => {
+      const thumb = getPortfolioThumb(item.url, item.type);
+      const logoClass = /sketchup\.com/i.test(item.url) ? ' logo-fit' : '';
+      html += `<article class="portfolio-gallery-card">`;
+      html += `<div class="portfolio-gallery-thumb"><img class="${logoClass.trim()}" src="${thumb}" alt="${item.title}" loading="lazy"></div>`;
+      html += `<div class="portfolio-gallery-body">`;
+      html += `<div class="portfolio-gallery-meta">${item.section} • ${item.type}</div>`;
+      html += `<div class="portfolio-gallery-title">${item.title}</div>`;
+      html += `<div class="portfolio-gallery-desc">${item.desc}</div>`;
+      html += `<a href="${item.url}" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>`;
+      html += `</div></article>`;
+    });
+    html += `</div></section>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function setPortfolioGroup(mode){
+  portfolioGroupMode = mode;
+  document.getElementById('portfolio-group-section')?.classList.toggle('active', mode === 'section');
+  document.getElementById('portfolio-group-type')?.classList.toggle('active', mode === 'type');
+  if (portfolioViewMode === 'gallery') renderPortfolioGallery();
+}
+
+function setPortfolioView(mode){
+  portfolioViewMode = mode;
+  const listView = document.getElementById('portfolio-list-view');
+  const galleryView = document.getElementById('portfolio-gallery-view');
+  const switchEl = document.getElementById('portfolio-view-switch');
+  const groupControls = document.getElementById('portfolio-group-controls');
+
+  const isGallery = mode === 'gallery';
+  listView?.classList.toggle('active', !isGallery);
+  galleryView?.classList.toggle('active', isGallery);
+  switchEl?.classList.toggle('is-gallery', isGallery);
+  switchEl?.setAttribute('aria-checked', isGallery ? 'true' : 'false');
+  groupControls?.classList.toggle('show', isGallery);
+
+  if (isGallery) renderPortfolioGallery();
+}
+
+function togglePortfolioView(){
+  setPortfolioView(portfolioViewMode === 'list' ? 'gallery' : 'list');
 }
 
 function showPage(id){
