@@ -414,7 +414,7 @@ body.intro-open{overflow:hidden;}
   <div class="intro-card">
     <div class="intro-head">
       <span id="intro-step" class="intro-step">1 / 3</span>
-      <button type="button" class="intro-skip" onclick="closeIntroTour(true)">Passer</button>
+      <button type="button" class="intro-skip" onclick="closeIntroTour(true)">Skip</button>
     </div>
     <div class="intro-body">
       <section class="intro-slide active">
@@ -423,7 +423,6 @@ body.intro-open{overflow:hidden;}
       </section>
       <section class="intro-slide">
         <h2 class="intro-title"><span class="intro-title-icon">🧭</span>Structure</h2>
-        <p class="intro-sub">This webpage is organized in sections to support quick understanding and discussion.</p>
         <div class="intro-points">
           <div class="intro-point"><strong>🏗️ Program Overview</strong><br>High-level structure and progression.</div>
           <div class="intro-point"><strong>🧩 Detailed Curriculum</strong><br>Course-by-course breakdown to support deeper analysis of each level.</div>
@@ -441,9 +440,9 @@ body.intro-open{overflow:hidden;}
       </section>
     </div>
     <div class="intro-actions">
-      <button type="button" id="intro-prev" class="intro-btn ghost" onclick="changeIntroSlide(-1)">Précédent</button>
-      <button type="button" id="intro-next" class="intro-btn primary" onclick="changeIntroSlide(1)">Suivant</button>
-      <button type="button" id="intro-start" class="intro-btn start" onclick="closeIntroTour(true)">Commencer</button>
+      <button type="button" id="intro-prev" class="intro-btn ghost" onclick="changeIntroSlide(-1)">Previous</button>
+      <button type="button" id="intro-next" class="intro-btn primary" onclick="changeIntroSlide(1)">Next</button>
+      <button type="button" id="intro-start" class="intro-btn start" onclick="closeIntroTour(true)">Start</button>
     </div>
   </div>
 </div>
@@ -1334,7 +1333,11 @@ function updateIntroTour() {
   const next = document.getElementById('intro-next');
   const start = document.getElementById('intro-start');
   if (step) step.textContent = `${introIndex + 1} / ${slides.length}`;
-  if (prev) prev.disabled = introIndex === 0;
+  if (prev) {
+    // Use visibility instead of disabled to avoid stale disabled state in some browsers.
+    prev.disabled = false;
+    prev.style.visibility = introIndex === 0 ? 'hidden' : 'visible';
+  }
   if (next) next.style.display = introIndex === slides.length - 1 ? 'none' : 'inline-flex';
   if (start) start.style.display = introIndex === slides.length - 1 ? 'inline-flex' : 'none';
 }
