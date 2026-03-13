@@ -1761,12 +1761,16 @@ function togglePortfolioView(){
   setPortfolioView(portfolioViewMode === 'list' ? 'gallery' : 'list');
 }
 
-function showPage(id){
+function showPage(id, pushState = true){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
   const activePage = document.getElementById('page-'+id);
   activePage.classList.add('active');
   document.querySelectorAll(`.nav-link[data-page="${id}"]`).forEach(a=>a.classList.add('active'));
+  // Update browser history so the Back button works
+  if (pushState) {
+    history.pushState({ page: id }, '', '#' + id);
+  }
   // Close drawer nav after navigation
   document.querySelector('.topnav')?.classList.remove('open');
   // Force top immediately and again after layout settles to avoid sticky scroll position.
@@ -1786,6 +1790,24 @@ function showPage(id){
     }, 80);
   }
 }
+
+// Handle browser Back/Forward buttons
+window.addEventListener('popstate', (e) => {
+  const id = (e.state && e.state.page) || (location.hash.slice(1)) || 'overview';
+  showPage(id, false);
+});
+
+// On first load, activate the page indicated by the URL hash (if any)
+(function(){
+  const hash = location.hash.slice(1);
+  const validPages = ['overview','cs0','cs1','cs2','cs3','cs4','milestones','portfolio'];
+  if (hash && validPages.includes(hash)) {
+    showPage(hash, false);
+    history.replaceState({ page: hash }, '', '#' + hash);
+  } else {
+    history.replaceState({ page: 'overview' }, '', location.href);
+  }
+})();
 
 function toggleNav(){
   document.querySelector('.topnav')?.classList.toggle('open');
