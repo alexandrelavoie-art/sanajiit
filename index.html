@@ -183,6 +183,11 @@ body.intro-open{overflow:hidden;}
 .gantt-table td{padding:10px 11px;font-size:12.5px;color:var(--slate);border-bottom:1px solid rgba(15,31,61,.07);vertical-align:middle;}
 .gantt-table tr:hover td{background:#fafbfd;}
 .gantt-table tr.phase-header td{background:rgba(15,31,61,.05);font-family:'DM Serif Display',serif;font-size:13px;font-weight:700;color:var(--navy);padding:9px 11px;}
+.gantt-table tr.subsection-header td{background:rgba(15,31,61,.03);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:700;color:var(--slate);padding:8px 11px;}
+.gantt-table tr.phase-gap td{padding:0;height:16px;border-bottom:none;background:transparent !important;}
+.gantt-table tr.phase-gap:hover td{background:transparent !important;}
+.gantt-table tr.total-gap td{padding:0;height:18px;border-bottom:none;background:transparent !important;}
+.gantt-table tr.total-gap:hover td{background:transparent !important;}
 .step-num{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:11px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;}
 .hrs-badge{display:inline-block;background:var(--bg);border:1px solid rgba(15,31,61,.12);border-radius:4px;padding:2px 7px;font-size:12px;color:var(--slate);}
 .hrs-badge.tbd{color:var(--silver);}
@@ -190,6 +195,12 @@ body.intro-open{overflow:hidden;}
 .date-start{background:rgba(45,106,79,.1);color:#2d6a4f;border:1px solid rgba(45,106,79,.2);}
 .date-end{background:var(--navy);color:var(--gold);}
 .date-tbd{background:var(--bg);color:var(--silver);border:1px solid rgba(15,31,61,.12);}
+.subtotal-row td{font-weight:600;color:var(--navy);font-size:12.5px;}
+.subtotal-subsection td{background:rgba(15,31,61,.025);font-size:12px;border-top:1px dashed rgba(15,31,61,.18);}
+.subtotal-section td{background:rgba(15,31,61,.08);font-size:12.8px;border-top:2px solid rgba(15,31,61,.18);}
+.subtotal-hours-subsection{background:rgba(15,31,61,.06);color:var(--slate);border-color:rgba(15,31,61,.18);}
+.subtotal-hours-section{background:var(--navy);color:var(--gold);border-color:var(--navy);}
+.total-hours-badge{background:var(--gold);color:var(--navy);border-color:rgba(15,31,61,.25);font-weight:700;}
 /* objective pictogram cards */
 .obj-cards{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
 @media(max-width:700px){.obj-cards{grid-template-columns:repeat(3,1fr);}}
@@ -239,7 +250,7 @@ body.intro-open{overflow:hidden;}
 }
 .radar-submit-btn{background:var(--navy);color:var(--gold);border:2px solid var(--gold);border-radius:8px;padding:11px 32px;font-size:13px;font-weight:600;letter-spacing:1px;cursor:pointer;transition:background .15s,color .15s;}
 .radar-submit-btn:hover{background:var(--gold);color:var(--navy);}
-.total-row td{font-weight:600;color:var(--navy);background:rgba(201,168,76,.08);font-size:13px;}
+.total-row td{font-weight:700;color:var(--navy);background:rgba(201,168,76,.2);font-size:13.2px;border-top:3px solid rgba(201,168,76,.7);}
 .obj-list-plain{padding-left:20px;display:flex;flex-direction:column;gap:9px;}
 .obj-list-plain li{font-size:13.5px;color:var(--slate);line-height:1.55;padding-left:4px;}
 .obj-list-plain li strong{color:var(--navy);}
@@ -671,7 +682,7 @@ body.intro-open{overflow:hidden;}
     <div class="card">
       <div class="card-header"><div class="card-icon">📍</div><div><div class="card-step">Roadmap</div><div class="card-title">Milestones Snapshot</div></div></div>
       <div class="card-body">
-        <p class="portfolio-intro">Key development checkpoints are grouped by phase to keep the rollout clear: curriculum structure first, then CS streams, then deployment support.</p>
+        <p class="portfolio-intro">Key development checkpoints are grouped by phase to keep the rollout clear: curriculum structure first, then full program development and rollout.</p>
         <div class="milestone-snapshot-grid">
           <article class="milestone-snapshot-item">
             <div class="milestone-snapshot-kicker">Phase 1</div>
@@ -681,15 +692,9 @@ body.intro-open{overflow:hidden;}
           </article>
           <article class="milestone-snapshot-item">
             <div class="milestone-snapshot-kicker">Phase 2</div>
-            <h3 class="milestone-snapshot-title">CS1 and CS2 Parallel Production</h3>
-            <span class="milestone-snapshot-meta">May → Nov 2026</span>
-            <p class="milestone-snapshot-desc">Develop and build learning assets for CS1 and CS2 in synchronized streams.</p>
-          </article>
-          <article class="milestone-snapshot-item">
-            <div class="milestone-snapshot-kicker">Phase 3</div>
-            <h3 class="milestone-snapshot-title">Infrastructure and Scale-up</h3>
-            <span class="milestone-snapshot-meta">May 2026 → TBD</span>
-            <p class="milestone-snapshot-desc">Platform setup, train-the-trainer, CS3 development, and complementary resources.</p>
+            <h3 class="milestone-snapshot-title">Full Program Development &amp; Rollout</h3>
+            <span class="milestone-snapshot-meta">Sep 2026 → Apr 2027</span>
+            <p class="milestone-snapshot-desc">Develop CS1 to CS3 curriculum and materials while delivering diffusion platform and train-the-trainer program.</p>
           </article>
         </div>
         <button type="button" class="portfolio-link-btn" onclick="showPage('milestones')">Open Milestones Timeline</button>
@@ -1920,26 +1925,74 @@ function renderMilestonesTable(config) {
     stepsByPhase.get(step.phaseId).push(step);
   });
 
+  function sumHours(steps) {
+    return steps.reduce((sum, step) => sum + (Number(step.hours) || 0), 0);
+  }
+
+  function renderStepRow(step) {
+    const start = formatMilestoneDate(step.start);
+    const end = formatMilestoneEndDate(step.end);
+    const hours = formatMilestoneHours(step.hours);
+    let row = '<tr>';
+    row += `<td><span class="step-num">${step.id}</span></td>`;
+    row += `<td><strong>${step.title}</strong>${step.description ? ` <span style="font-size:12px;color:var(--silver);display:block;">${step.description}</span>` : ''}</td>`;
+    row += `<td><span class="hrs-badge${hours.isTbd ? ' tbd' : ''}">${hours.text}</span></td>`;
+    row += `<td><span class="date-badge ${start.css}">${start.text}</span></td>`;
+    row += `<td><span class="date-badge ${end.css}">${end.text}</span></td>`;
+    row += '</tr>';
+    return row;
+  }
+
+  function renderSubtotalRow(label, totalHours, type) {
+    const rowClass = type === 'subsection' ? 'subtotal-subsection' : 'subtotal-section';
+    const badgeClass = type === 'subsection' ? 'subtotal-hours-subsection' : 'subtotal-hours-section';
+    return `<tr class="subtotal-row ${rowClass}"><td colspan="2" style="font-family:'DM Sans',sans-serif;">${label}</td><td><span class="hrs-badge ${badgeClass}">${totalHours} h</span></td><td colspan="2"></td></tr>`;
+  }
+
   let html = '';
-  config.phases.forEach(phase => {
-    const steps = stepsByPhase.get(phase.id) || [];
+  config.phases.forEach((phase, phaseIndex) => {
+    const steps = (stepsByPhase.get(phase.id) || []).slice().sort((a, b) => Number(a.id) - Number(b.id));
+    if (phaseIndex > 0) {
+      html += `<tr class="phase-gap" aria-hidden="true"><td colspan="5"></td></tr>`;
+    }
     html += `<tr class="phase-header"><td colspan="5">${phase.title}</td></tr>`;
-    steps.forEach(step => {
-      const start = formatMilestoneDate(step.start);
-      const end = formatMilestoneEndDate(step.end);
-      const hours = formatMilestoneHours(step.hours);
-      html += `<tr>`;
-      html += `<td><span class="step-num">${step.id}</span></td>`;
-      html += `<td><strong>${step.title}</strong>${step.description ? ` <span style="font-size:12px;color:var(--silver);display:block;">${step.description}</span>` : ''}</td>`;
-      html += `<td><span class="hrs-badge${hours.isTbd ? ' tbd' : ''}">${hours.text}</span></td>`;
-      html += `<td><span class="date-badge ${start.css}">${start.text}</span></td>`;
-      html += `<td><span class="date-badge ${end.css}">${end.text}</span></td>`;
-      html += `</tr>`;
-    });
+
+    if (phase.id === 'phase-2') {
+      const curriculumSteps = steps.filter(step => Number(step.id) >= 5 && Number(step.id) <= 10);
+      const rolloutSteps = steps.filter(step => Number(step.id) >= 11 && Number(step.id) <= 13);
+      const otherSteps = steps.filter(step => Number(step.id) < 5 || Number(step.id) > 13);
+
+      if (curriculumSteps.length) {
+        html += `<tr class="subsection-header"><td colspan="5">Section 2A — Curriculum Development</td></tr>`;
+        curriculumSteps.forEach(step => {
+          html += renderStepRow(step);
+        });
+        html += renderSubtotalRow('Subtotal — Curriculum Development', sumHours(curriculumSteps), 'subsection');
+      }
+
+      if (rolloutSteps.length) {
+        html += `<tr class="subsection-header"><td colspan="5">Section 2B — Rollout Infrastructure &amp; Complementary work</td></tr>`;
+        rolloutSteps.forEach(step => {
+          html += renderStepRow(step);
+        });
+        html += renderSubtotalRow('Subtotal — Rollout Infrastructure & Support', sumHours(rolloutSteps), 'subsection');
+      }
+
+      otherSteps.forEach(step => {
+        html += renderStepRow(step);
+      });
+    } else {
+      steps.forEach(step => {
+        html += renderStepRow(step);
+      });
+    }
+
+    html += renderSubtotalRow(`Subtotal — ${phase.title}`, sumHours(steps), 'section');
   });
 
   const totalHours = config.steps.reduce((sum, step) => sum + (Number(step.hours) || 0), 0);
-  html += `<tr class="total-row"><td colspan="2" style="font-family:'DM Serif Display',serif;font-size:14px;">Total Estimated Effort</td><td><span class="hrs-badge" style="background:var(--navy);color:var(--gold);border-color:var(--navy);">${totalHours} h</span></td><td colspan="2"></td></tr>`;
+  html += `<tr class="total-gap" aria-hidden="true"><td colspan="5"></td></tr>`;
+  html += `<tr class="total-row"><td colspan="2" style="font-family:'DM Serif Display',serif;font-size:14px;">Total Estimated Effort</td><td><span class="hrs-badge total-hours-badge">${totalHours} h</span></td><td colspan="2"></td></tr>`;
   body.innerHTML = html;
 }
 

@@ -6,11 +6,7 @@
     },
     {
       "id": "phase-2",
-      "title": "Phase 2 — CS1 - CS2 - CS3 (revision and development)"
-    },
-    {
-      "id": "phase-3",
-      "title": "Phase 3 — Diffusion Infrastructure, Train the trainer & Complementary work"
+      "title": "Phase 2 — Full Program Development & Rollout"
     }
   ],
   "groups": {
@@ -143,7 +139,7 @@
     },
     {
       "id": 11,
-      "phaseId": "phase-3",
+      "phaseId": "phase-2",
       "group": "other",
       "title": "Diffusion Platform",
       "description": "Online and offline platform for teachers and students",
@@ -155,7 +151,7 @@
     },
     {
       "id": 12,
-      "phaseId": "phase-3",
+      "phaseId": "phase-2",
       "group": "other",
       "title": "Train the Trainer",
       "description": "Development of trainer program",
@@ -167,7 +163,7 @@
     },
     {
       "id": 13,
-      "phaseId": "phase-3",
+      "phaseId": "phase-2",
       "group": "other",
       "title": "Complementary Material",
       "description": "Additional resources",
