@@ -255,7 +255,9 @@ body.intro-open{overflow:hidden;}
 @media(max-width:760px){.portfolio-summary-grid{grid-template-columns:1fr;}}
 .portfolio-summary-item{background:var(--bg);border:1px solid rgba(15,31,61,.08);border-radius:10px;padding:14px;}
 .portfolio-summary-thumb{height:140px;border-radius:8px;overflow:hidden;margin-bottom:10px;background:linear-gradient(135deg,var(--navy),var(--navy2));border:1px solid rgba(15,31,61,.1);}
-.portfolio-summary-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.portfolio-summary-thumb a{display:block;height:100%;}
+.portfolio-summary-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s;}
+.portfolio-summary-thumb a:hover img{opacity:.82;}
 .portfolio-summary-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:7px;}
 .portfolio-summary-title{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px;}
 .portfolio-summary-desc{font-size:12px;color:var(--slate);line-height:1.5;}
@@ -332,7 +334,9 @@ body.intro-open{overflow:hidden;}
 @media(max-width:560px){.portfolio-gallery-grid{grid-template-columns:1fr;}}
 .portfolio-gallery-card{border:1px solid rgba(15,31,61,.1);border-radius:10px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column;}
 .portfolio-gallery-thumb{height:126px;background:linear-gradient(135deg,var(--navy),var(--navy2));}
-.portfolio-gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+.portfolio-gallery-thumb a{display:block;height:100%;}
+.portfolio-gallery-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s;}
+.portfolio-gallery-thumb a:hover img{opacity:.82;}
 .portfolio-gallery-thumb img.logo-fit{object-fit:contain;background:#ffffff;padding:16px;}
 .portfolio-gallery-body{padding:10px 10px 12px;display:flex;flex-direction:column;gap:7px;}
 .portfolio-gallery-meta{font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--silver);}
@@ -701,25 +705,22 @@ body.intro-open{overflow:hidden;}
         <p class="portfolio-intro">This portfolio includes a selection of materials created over the years for students and teachers. These resources are provided for demonstration purposes only and should not be downloaded or shared.</p>
         <div class="portfolio-summary-grid">
           <article class="portfolio-summary-item">
-            <div class="portfolio-summary-thumb"><img src="https://drive.google.com/thumbnail?id=1vvWpkP3ta0J8jKuoqiBdv7fMSknPoPaH&amp;sz=w1200" alt="Presentation of teaching approach thumbnail" loading="lazy"></div>
+            <div class="portfolio-summary-thumb"><a href="https://drive.google.com/file/d/1vvWpkP3ta0J8jKuoqiBdv7fMSknPoPaH/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><img src="https://drive.google.com/thumbnail?id=1vvWpkP3ta0J8jKuoqiBdv7fMSknPoPaH&amp;sz=w1200" alt="Presentation of teaching approach thumbnail" loading="lazy"></a></div>
             <div class="portfolio-summary-label">Presentation</div>
             <h3 class="portfolio-summary-title">Presentation of our teaching approach at FNAESC symposium: from foreman to leader to teacher</h3>
             <p class="portfolio-summary-desc">Conference presentation introducing the Sanajiit pedagogical approach.</p>
-            <a href="https://drive.google.com/file/d/1vvWpkP3ta0J8jKuoqiBdv7fMSknPoPaH/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
           </article>
           <article class="portfolio-summary-item">
-            <div class="portfolio-summary-thumb"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201200%20675%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%230f1f3d%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%231a3260%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%271200%27%20height%3D%27675%27%20fill%3D%27url(%23g)%27/%3E%3Ccircle%20cx%3D%27600%27%20cy%3D%27337.5%27%20r%3D%27120%27%20fill%3D%27rgba(255%2C255%2C255%2C0.1)%27%20stroke%3D%27%23f0e0a8%27%20stroke-width%3D%274%27/%3E%3Cpolygon%20points%3D%27560%2C270%20560%2C405%20680%2C337.5%27%20fill%3D%27%23f0e0a8%27/%3E%3C/svg%3E" alt="Project 1 interactive video capsules thumbnail" loading="lazy"></div>
+            <div class="portfolio-summary-thumb"><a href="https://learnful.ca/module/763/launch" target="_blank" rel="noopener noreferrer"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%201200%20675%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%25%27%20stop-color%3D%27%230f1f3d%27/%3E%3Cstop%20offset%3D%27100%25%27%20stop-color%3D%27%231a3260%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%271200%27%20height%3D%27675%27%20fill%3D%27url(%23g)%27/%3E%3Ccircle%20cx%3D%27600%27%20cy%3D%27337.5%27%20r%3D%27120%27%20fill%3D%27rgba(255%2C255%2C255%2C0.1)%27%20stroke%3D%27%23f0e0a8%27%20stroke-width%3D%274%27/%3E%3Cpolygon%20points%3D%27560%2C270%20560%2C405%20680%2C337.5%27%20fill%3D%27%23f0e0a8%27/%3E%3C/svg%3E" alt="Project 1 interactive video capsules thumbnail" loading="lazy"></a></div>
             <div class="portfolio-summary-label">Interactive video</div>
             <h3 class="portfolio-summary-title">Project 1 - Interactive video capsules</h3>
             <p class="portfolio-summary-desc">Interactive module with guided video capsules for Project 1.</p>
-            <a href="https://learnful.ca/module/763/launch" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
           </article>
           <article class="portfolio-summary-item">
-            <div class="portfolio-summary-thumb"><img src="https://drive.google.com/thumbnail?id=1YxAEZjURS-DCysWR2Apk9dqSaiV7kFbs&amp;sz=w1200" alt="AAA Policy thumbnail" loading="lazy"></div>
+            <div class="portfolio-summary-thumb"><a href="https://drive.google.com/file/d/1YxAEZjURS-DCysWR2Apk9dqSaiV7kFbs/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><img src="https://drive.google.com/thumbnail?id=1YxAEZjURS-DCysWR2Apk9dqSaiV7kFbs&amp;sz=w1200" alt="AAA Policy thumbnail" loading="lazy"></a></div>
             <div class="portfolio-summary-label">Policy</div>
             <h3 class="portfolio-summary-title">AAA Policy (developped by Western Quebec School Board)</h3>
             <p class="portfolio-summary-desc">Reference policy used to support classroom and employability expectations.</p>
-            <a href="https://drive.google.com/file/d/1YxAEZjURS-DCysWR2Apk9dqSaiV7kFbs/view?usp=drive_link" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>
           </article>
         </div>
         <button type="button" class="portfolio-link-btn" onclick="showPage('portfolio')">Open Full Portfolio</button>
@@ -1719,12 +1720,11 @@ function renderPortfolioGallery(){
       const thumb = getPortfolioThumb(item.url, item.type);
       const logoClass = /sketchup\.com/i.test(item.url) ? ' logo-fit' : '';
       html += `<article class="portfolio-gallery-card">`;
-      html += `<div class="portfolio-gallery-thumb"><img class="${logoClass.trim()}" src="${thumb}" alt="${item.title}" loading="lazy"></div>`;
+      html += `<div class="portfolio-gallery-thumb"><a href="${item.url}" target="_blank" rel="noopener noreferrer"><img class="${logoClass.trim()}" src="${thumb}" alt="${item.title}" loading="lazy"></a></div>`;
       html += `<div class="portfolio-gallery-body">`;
       html += `<div class="portfolio-gallery-meta">${item.section} • ${item.type}</div>`;
       html += `<div class="portfolio-gallery-title">${item.title}</div>`;
       html += `<div class="portfolio-gallery-desc">${item.desc}</div>`;
-      html += `<a href="${item.url}" class="portfolio-cta primary" target="_blank" rel="noopener noreferrer">Open Resource</a>`;
       html += `</div></article>`;
     });
     html += `</div></section>`;
@@ -1761,12 +1761,16 @@ function togglePortfolioView(){
   setPortfolioView(portfolioViewMode === 'list' ? 'gallery' : 'list');
 }
 
-function showPage(id){
+function showPage(id, pushState = true){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-link').forEach(a=>a.classList.remove('active'));
   const activePage = document.getElementById('page-'+id);
   activePage.classList.add('active');
   document.querySelectorAll(`.nav-link[data-page="${id}"]`).forEach(a=>a.classList.add('active'));
+  // Update browser history so the Back button works
+  if (pushState) {
+    history.pushState({ page: id }, '', '#' + id);
+  }
   // Close drawer nav after navigation
   document.querySelector('.topnav')?.classList.remove('open');
   // Force top immediately and again after layout settles to avoid sticky scroll position.
@@ -1786,6 +1790,24 @@ function showPage(id){
     }, 80);
   }
 }
+
+// Handle browser Back/Forward buttons
+window.addEventListener('popstate', (e) => {
+  const id = (e.state && e.state.page) || (location.hash.slice(1)) || 'overview';
+  showPage(id, false);
+});
+
+// On first load, activate the page indicated by the URL hash (if any)
+(function(){
+  const hash = location.hash.slice(1);
+  const validPages = ['overview','cs0','cs1','cs2','cs3','cs4','milestones','portfolio'];
+  if (hash && validPages.includes(hash)) {
+    showPage(hash, false);
+    history.replaceState({ page: hash }, '', '#' + hash);
+  } else {
+    history.replaceState({ page: 'overview' }, '', location.href);
+  }
+})();
 
 function toggleNav(){
   document.querySelector('.topnav')?.classList.toggle('open');
