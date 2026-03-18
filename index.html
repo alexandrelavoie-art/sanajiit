@@ -398,7 +398,7 @@ body.intro-open{overflow:hidden;}
   <div class="topnav-links">
     <a href="javascript:void(0)" onclick="openIntroTour();return false;">Welcome</a>
     <a href="javascript:void(0)" onclick="showPage('overview');return false;" class="nav-link active" data-page="overview">Overview</a>
-    <a href="javascript:void(0)" onclick="showPage('cs0');return false;" class="nav-link" data-page="cs0">CS0 — Intro</a>
+    <a href="javascript:void(0)" onclick="showPage('cs0');return false;" class="nav-link" data-page="cs0">CS0 — Tools for success</a>
     <a href="javascript:void(0)" onclick="showPage('cs1');return false;" class="nav-link" data-page="cs1">CS1 — Shed</a>
     <a href="javascript:void(0)" onclick="showPage('cs2');return false;" class="nav-link" data-page="cs2">CS2 — Shelter</a>
     <a href="javascript:void(0)" onclick="showPage('cs3');return false;" class="nav-link" data-page="cs3">CS3 — Finish</a>
@@ -409,7 +409,7 @@ body.intro-open{overflow:hidden;}
   <div class="topnav-drawer">
     <a href="javascript:void(0)" onclick="openIntroTour();return false;">Welcome</a>
     <a href="javascript:void(0)" onclick="showPage('overview');return false;" class="nav-link active" data-page="overview">Overview</a>
-    <a href="javascript:void(0)" onclick="showPage('cs0');return false;" class="nav-link" data-page="cs0">CS0 — Intro</a>
+    <a href="javascript:void(0)" onclick="showPage('cs0');return false;" class="nav-link" data-page="cs0">CS0 — Tools for success</a>
     <a href="javascript:void(0)" onclick="showPage('cs1');return false;" class="nav-link" data-page="cs1">CS1 — Shed</a>
     <a href="javascript:void(0)" onclick="showPage('cs2');return false;" class="nav-link" data-page="cs2">CS2 — Shelter</a>
     <a href="javascript:void(0)" onclick="showPage('cs3');return false;" class="nav-link" data-page="cs3">CS3 — Finish</a>
@@ -735,7 +735,7 @@ body.intro-open{overflow:hidden;}
     <div class="hero-dots"></div>
     <div class="hero-inner">
       <p class="hero-label">Detailed Curriculum</p>
-      <h1 class="hero-h1">CS0 — <em>Intro</em></h1>
+      <h1 class="hero-h1">CS0 — <em>Tools for success</em></h1>
       <p class="hero-sub">5 days · Foundational skills, essential tools, and the habits of a professional.</p>
       <div class="hero-anchors">
         <a class="hero-anchor" href="javascript:void(0)" onclick="showPage('overview');return false;">← Back to Overview</a>
@@ -1303,7 +1303,7 @@ body.intro-open{overflow:hidden;}
 
     <span class="section-anchor" id="ms-gantt"></span>
     <div class="card">
-      <div class="card-header"><div class="card-icon">📊</div><div><div class="card-step">Visual Timeline</div><div class="card-title">Gantt Chart — April to November 2026</div></div></div>
+      <div class="card-header"><div class="card-icon">📊</div><div><div class="card-step">Visual Timeline</div><div class="card-title">June 2026 to April 2027 Timeline</div></div></div>
       <div class="card-body">
         <div class="gantt-legend" id="gantt-legend"></div>
         <div class="gantt-chart-wrap">
@@ -1819,14 +1819,14 @@ async function getMilestonesConfig() {
 }
 
 function formatMilestoneDate(dateStr) {
-  if (!dateStr) return { text: 'TBD', css: 'date-tbd' };
+  if (!dateStr) return { text: 'N/A', css: 'date-tbd' };
   const d = parseMilestoneDate(dateStr);
   const text = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   return { text, css: 'date-start' };
 }
 
 function formatMilestoneEndDate(dateStr) {
-  if (!dateStr) return { text: 'TBD', css: 'date-tbd' };
+  if (!dateStr) return { text: 'N/A', css: 'date-tbd' };
   const d = parseMilestoneDate(dateStr);
   const text = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   return { text, css: 'date-end' };
