@@ -57,12 +57,12 @@
       "id": 4,
       "phaseId": "phase-1",
       "group": "cs0",
-      "title": "CS0 trial run",
-      "description": "First implementation of CS0. Feedback loop and adjustement",
+      "title": "CS0 Feedback loop",
+      "description": "Adjustments after first implementation of CS0. ",
       "hours": 60,
       "start": null,
       "end": null,
-      "short": "CS0 Implementation",
+      "short": "CS0 Feedback loop",
       "includeInGantt": false
     },
     {
@@ -141,6 +141,18 @@
       "id": 11,
       "phaseId": "phase-2",
       "group": "other",
+      "title": "CS1-2-3 Feedback loop",
+      "description": "Adjustments after first implementation of CS1-2-3. ",
+      "hours": 120,
+      "start": null,
+      "end": null,
+      "short": "CS1-2-3 Feedback loop",
+      "includeInGantt": false
+    },
+    {
+      "id": 12,
+      "phaseId": "phase-2",
+      "group": "other",
       "title": "Diffusion Platform",
       "description": "Online and offline platform for teachers and students",
       "hours": 200,
@@ -150,7 +162,7 @@
       "includeInGantt": true
     },
     {
-      "id": 12,
+      "id": 13,
       "phaseId": "phase-2",
       "group": "other",
       "title": "Train the Trainer",
@@ -162,7 +174,7 @@
       "includeInGantt": true
     },
     {
-      "id": 13,
+      "id": 14,
       "phaseId": "phase-2",
       "group": "other",
       "title": "Complementary Material",

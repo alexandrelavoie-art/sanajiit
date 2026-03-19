@@ -184,6 +184,8 @@ body.intro-open{overflow:hidden;}
 .gantt-table tr:hover td{background:#fafbfd;}
 .gantt-table tr.phase-header td{background:rgba(15,31,61,.05);font-family:'DM Serif Display',serif;font-size:13px;font-weight:700;color:var(--navy);padding:9px 11px;}
 .gantt-table tr.subsection-header td{background:rgba(15,31,61,.03);font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:700;color:var(--slate);padding:8px 11px;}
+.gantt-table tr.subsection-gap td{padding:0;height:14px;border-bottom:none;background:linear-gradient(to right,transparent 0%,rgba(15,31,61,.12) 22%,rgba(15,31,61,.12) 78%,transparent 100%) center/100% 1px no-repeat !important;}
+.gantt-table tr.subsection-gap:hover td{background:linear-gradient(to right,transparent 0%,rgba(15,31,61,.12) 22%,rgba(15,31,61,.12) 78%,transparent 100%) center/100% 1px no-repeat !important;}
 .gantt-table tr.phase-gap td{padding:0;height:16px;border-bottom:none;background:transparent !important;}
 .gantt-table tr.phase-gap:hover td{background:transparent !important;}
 .gantt-table tr.total-gap td{padding:0;height:18px;border-bottom:none;background:transparent !important;}
@@ -682,7 +684,7 @@ body.intro-open{overflow:hidden;}
     <div class="card">
       <div class="card-header"><div class="card-icon">📍</div><div><div class="card-step">Roadmap</div><div class="card-title">Milestones Snapshot</div></div></div>
       <div class="card-body">
-        <p class="portfolio-intro">Key development checkpoints are grouped by phase to keep the rollout clear: curriculum structure first, then full program development and rollout.</p>
+        <p class="portfolio-intro">Key development checkpoints are grouped by phase to keep the rollout clear: curriculum structure and CS0 first, then full program development and rollout.</p>
         <div class="milestone-snapshot-grid">
           <article class="milestone-snapshot-item">
             <div class="milestone-snapshot-kicker">Phase 1</div>
@@ -1958,9 +1960,9 @@ function renderMilestonesTable(config) {
     html += `<tr class="phase-header"><td colspan="5">${phase.title}</td></tr>`;
 
     if (phase.id === 'phase-2') {
-      const curriculumSteps = steps.filter(step => Number(step.id) >= 5 && Number(step.id) <= 10);
-      const rolloutSteps = steps.filter(step => Number(step.id) >= 11 && Number(step.id) <= 13);
-      const otherSteps = steps.filter(step => Number(step.id) < 5 || Number(step.id) > 13);
+      const curriculumSteps = steps.filter(step => Number(step.id) >= 5 && Number(step.id) <= 11);
+      const rolloutSteps = steps.filter(step => Number(step.id) >= 12 && Number(step.id) <= 14);
+      const otherSteps = steps.filter(step => Number(step.id) < 5 || Number(step.id) > 14);
 
       if (curriculumSteps.length) {
         html += `<tr class="subsection-header"><td colspan="5">Section 2A — Curriculum Development</td></tr>`;
@@ -1968,6 +1970,10 @@ function renderMilestonesTable(config) {
           html += renderStepRow(step);
         });
         html += renderSubtotalRow('Subtotal — Curriculum Development', sumHours(curriculumSteps), 'subsection');
+      }
+
+      if (curriculumSteps.length && rolloutSteps.length) {
+        html += `<tr class="subsection-gap" aria-hidden="true"><td colspan="5"></td></tr>`;
       }
 
       if (rolloutSteps.length) {
